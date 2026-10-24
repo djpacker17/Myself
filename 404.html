@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página no encontrada | Leo</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F1B2D'/%3E%3Cpath d='M22 16v32h20' stroke='%23fff' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F6F8;--surface:#fff;--ink:#0F1B2D;--ink-2:#3C4760;--muted:#6A7389;--line:#E2E5EB;--grid:rgba(15,27,45,.06);--accent:#2453D6}
+@media (prefers-color-scheme:dark){:root{--bg:#0A111E;--surface:#101A2B;--ink:#EDF1F7;--ink-2:#C3CAD8;--muted:#8C96AB;--line:#202B41;--grid:rgba(255,255,255,.05);--accent:#6F95FF}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:grid;place-items:center;padding:24px;background:var(--bg);color:var(--ink);font-family:"Geist",system-ui,sans-serif;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px}
+main{max-width:520px;text-align:center}
+.code{font-family:"Geist Mono",monospace;font-size:15px;color:var(--accent);font-weight:500}
+h1{margin-top:14px;font-size:clamp(34px,6vw,52px);line-height:1.05;letter-spacing:-.035em;font-weight:600}
+p{margin-top:14px;color:var(--ink-2);font-size:18px;line-height:1.6}
+a{display:inline-flex;align-items:center;gap:8px;margin-top:30px;height:48px;padding:0 22px;border-radius:11px;background:var(--ink);color:var(--bg);font-weight:600;text-decoration:none}
+a:hover{background:var(--accent);color:#fff}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+<main>
+  <div class="code">404</div>
+  <h1 id="t">Esta página no existe.</h1>
+  <p id="p">Puede que el enlace esté mal escrito o que la página se haya movido.</p>
+  <a id="a" href="/Myself/">Volver al portafolio</a>
+</main>
+<script>
+  /* Lleva al inicio del sitio, funcione en /Myself/ o en la raíz */
+  var base = location.hostname.endsWith("github.io") && location.pathname.split("/")[1] && location.pathname.split("/")[1].toLowerCase() === "myself" ? "/Myself/" : "/";
+  document.getElementById("a").href = base;
+  var en = !((navigator.language || "es").toLowerCase().startsWith("es"));
+  try { var l = localStorage.getItem("leo-lang"); if (l) en = l === "en"; } catch(e){}
+  if (en){
+    document.documentElement.lang = "en"; document.title = "Page not found | Leo";
+    document.getElementById("t").textContent = "This page doesn't exist.";
+    document.getElementById("p").textContent = "The link may be mistyped, or the page may have moved.";
+    document.getElementById("a").textContent = "Back to the portfolio";
+  }
+</script>
+</body>
+</html>
