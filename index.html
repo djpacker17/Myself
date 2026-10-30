@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leo | Desarrollador web y de software</title>
-<meta name="description" content="Leo, desarrollador web y de software. Páginas web, aplicaciones de PC, automatización con JavaScript y scripts de Roblox (Luau). Fundador de Zypuc.">
-<meta property="og:title" content="Leo | Desarrollador web y de software">
-<meta property="og:description" content="Páginas web y scripts a medida, listos para usar. Fundador de Zypuc.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leo | Desarrollador web, de apps y diseñador de marca</title>
+<meta name="description" content="Leo, desarrollador web y de apps en Pucallpa, Perú. Páginas web, tiendas online, identidad de marca y scripts para Roblox (Luau) y Minecraft. Fundador de Zypuc. Contrátame en Fiverr.">
+<meta property="og:title" content="Leo | Webs, marcas y scripts a medida">
+<meta property="og:description" content="Páginas web, tiendas online, identidad de marca y scripts para Roblox y Minecraft. Fundador de Zypuc.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://djpacker17.github.io/Myself/">
 <meta property="og:image" content="https://djpacker17.github.io/Myself/media/og.png">
@@ -15,413 +15,71 @@
 <meta property="og:locale" content="es_PE">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Leo | Desarrollador web y de software">
-<meta name="twitter:description" content="Páginas web y scripts a medida, listos para usar. Fundador de Zypuc.">
+<meta name="twitter:title" content="Leo | Webs, marcas y scripts a medida">
+<meta name="twitter:description" content="Páginas web, tiendas online, identidad de marca y scripts para Roblox y Minecraft.">
 <meta name="twitter:image" content="https://djpacker17.github.io/Myself/media/og.png">
 <link rel="canonical" href="https://djpacker17.github.io/Myself/">
-<meta name="theme-color" content="#F5F6F8">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F1B2D'/%3E%3Cpath d='M22 16v32h20' stroke='%23fff' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="alternate" hreflang="es" href="https://djpacker17.github.io/Myself/?lang=es">
+<link rel="alternate" hreflang="en" href="https://djpacker17.github.io/Myself/?lang=en">
+<meta name="theme-color" content="#0A111E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230F1B2D'/%3E%3Cpath d='M22 15v32h17' stroke='%23fff' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='42' y='43' width='10' height='5' rx='2' fill='%232DD4BF'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Fredoka:wght@600;700&family=Nunito+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css?v=4">
 <script>
-  document.documentElement.classList.add("js");
-  try { const t = localStorage.getItem("leo-theme"); if (t) document.documentElement.dataset.theme = t; } catch(e){}
-  try { const l = (new URLSearchParams(location.search).get("lang")) || localStorage.getItem("leo-lang") || ((navigator.language || "es").toLowerCase().startsWith("es") ? "es" : "en"); document.documentElement.lang = l === "en" ? "en" : "es"; } catch(e){}
+  /* Antes de pintar: tema, idioma y si toca mostrar la intro */
+  (function(){
+    var d = document.documentElement; d.classList.add("js");
+    try { var t = localStorage.getItem("leo-theme"); if (t) d.dataset.theme = t; } catch(e){}
+    try {
+      var q = new URLSearchParams(location.search);
+      var l = q.get("lang") || localStorage.getItem("leo-lang") || ((navigator.language || "es").toLowerCase().indexOf("es") === 0 ? "es" : "en");
+      d.lang = l === "en" ? "en" : "es";
+      var seen = false; try { seen = sessionStorage.getItem("leo-intro") === "1"; } catch(e){}
+      var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!seen && !reduce && !location.hash && q.get("intro") !== "0") d.classList.add("intro-on");
+      if (q.get("intro") === "1" && !reduce) d.classList.add("intro-on");
+    } catch(e){}
+  })();
 </script>
-<style>
-@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
-:root{
-  --bg:#F5F6F8;
-  --surface:#FFFFFF;
-  --ink:#0F1B2D;
-  --ink-2:#3C4760;
-  --muted:#6A7389;
-  --line:#E2E5EB;
-  --grid:rgba(15,27,45,.055);
-  --accent:#2453D6;
-  --accent-2:#14B8A6;
-  --accent-hover:#1C43B4;
-  --btn:#2453D6;--btn-hover:#1C43B4;
-  --soft:#EBF0FD;
-  --ok:#14A06B;
-  --shadow:0 1px 2px rgba(15,27,45,.05),0 14px 36px -14px rgba(15,27,45,.16);
-  --font:"Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono:"Geist Mono", ui-monospace, monospace;
-  --wrap:1160px;
-  --ease:cubic-bezier(.2,.8,.2,1);
-}
-:root[data-theme="dark"]{
-  --bg:#0A111E;--surface:#101A2B;--ink:#EDF1F7;--ink-2:#C3CAD8;--muted:#8C96AB;--line:#202B41;--grid:rgba(255,255,255,.045);
-  --accent:#6F95FF;--accent-2:#2DD4BF;--accent-hover:#8CABFF;--btn:#2E62F0;--btn-hover:#4171FF;--soft:#15234A;--shadow:0 1px 2px rgba(0,0,0,.3),0 18px 44px -18px rgba(0,0,0,.7);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#0A111E;--surface:#101A2B;--ink:#EDF1F7;--ink-2:#C3CAD8;--muted:#8C96AB;--line:#202B41;--grid:rgba(255,255,255,.045);
-    --accent:#6F95FF;--accent-2:#2DD4BF;--accent-hover:#8CABFF;--btn:#2E62F0;--btn-hover:#4171FF;--soft:#15234A;--shadow:0 1px 2px rgba(0,0,0,.3),0 18px 44px -18px rgba(0,0,0,.7);
-  }
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s}
-img,svg{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
-.ico{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:#fff;padding:8px 14px;border-radius:8px;z-index:100}
-.skip:focus{left:8px}
-
-/* ===== Fondo interactivo: cuadrícula + cuadrados que se encienden ===== */
-.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:40px 40px;background-position:-1px -1px;
-  -webkit-mask-image:radial-gradient(ellipse 90% 75% at 50% 20%,#000 30%,transparent 85%);mask-image:radial-gradient(ellipse 90% 75% at 50% 20%,#000 30%,transparent 85%)}
-#squares{position:fixed;inset:0;z-index:0;pointer-events:none;width:100%;height:100%;
-  -webkit-mask-image:radial-gradient(ellipse 90% 75% at 50% 20%,#000 30%,transparent 85%);mask-image:radial-gradient(ellipse 90% 75% at 50% 20%,#000 30%,transparent 85%)}
-.glow{position:fixed;z-index:0;pointer-events:none;width:620px;height:620px;border-radius:50%;filter:blur(70px);opacity:.5;animation:drift 22s ease-in-out infinite alternate}
-.glow.g1{top:-220px;right:-160px;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 35%,transparent),transparent 65%)}
-.glow.g2{top:30%;left:-260px;background:radial-gradient(circle,color-mix(in srgb,var(--accent-2) 28%,transparent),transparent 65%);animation-duration:28s;animation-direction:alternate-reverse}
-@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(-80px,90px) scale(1.15)}}
-.page{position:relative;z-index:1}
-.progress{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--accent),var(--accent-2));z-index:60}
-
-/* ===== Botones ===== */
-.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;height:48px;padding:0 22px;border-radius:11px;font-weight:600;font-size:15px;letter-spacing:-.005em;transition:background .2s,border-color .2s,color .2s,box-shadow .2s,transform .25s var(--ease);will-change:transform;overflow:hidden}
-.btn-primary{background:var(--ink);color:var(--bg)}
-.btn-primary:hover{background:var(--accent);color:#fff}
-.btn-accent{background:var(--btn);color:#fff;box-shadow:0 10px 26px -10px color-mix(in srgb,var(--accent) 80%,transparent)}
-.btn-accent:hover{background:var(--btn-hover)}
-.btn-accent::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
-@keyframes shine{0%,70%{left:-60%}100%{left:130%}}
-.btn-line{border:1px solid var(--line);background:var(--surface);color:var(--ink)}
-.btn-line:hover{border-color:var(--ink-2)}
-.btn-sm{height:38px;padding:0 15px;font-size:14px;border-radius:9px}
-.btn .arrow{transition:transform .25s var(--ease)}
-.btn:hover .arrow{transform:translate(2px,-2px)}
-
-/* ===== Navegación ===== */
-header.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
-header.nav.scrolled{border-bottom-color:var(--line)}
-.nav .wrap{display:flex;align-items:center;gap:28px;height:68px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em}
-.brand .mark{width:30px;height:30px;border-radius:8px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:15px;font-weight:700;transition:transform .4s var(--ease)}
-.brand:hover .mark{transform:rotate(-8deg) scale(1.06)}
-.nav nav{margin-left:auto}
-.nav ul{display:flex;gap:2px;list-style:none}
-.nav ul a{position:relative;display:block;padding:7px 12px;border-radius:8px;color:var(--muted);font-size:15px;font-weight:500;transition:color .15s}
-.nav ul a::after{content:"";position:absolute;left:12px;right:12px;bottom:3px;height:1.5px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
-.nav ul a:hover,.nav ul a.active{color:var(--ink)}
-.nav ul a.active::after{transform:scaleX(1)}
-.theme{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;color:var(--muted);border:1px solid var(--line);background:var(--surface)}
-.theme:hover{color:var(--ink)}
-.theme .ico{transition:transform .5s var(--ease)}
-.theme:hover .ico{transform:rotate(25deg)}
-.theme .sun{display:none}
-:root[data-theme="dark"] .theme .sun{display:block}
-:root[data-theme="dark"] .theme .moon{display:none}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .theme .sun{display:block}
-  :root:not([data-theme="light"]) .theme .moon{display:none}
-}
-
-/* ===== Hero ===== */
-.hero{padding:84px 0 40px}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);gap:72px;align-items:center}
-.status{display:inline-flex;align-items:center;gap:9px;padding:6px 13px 6px 10px;border-radius:99px;border:1px solid var(--line);background:var(--surface);font-size:14px;color:var(--ink-2);font-weight:500}
-.status i{position:relative;width:8px;height:8px;border-radius:50%;background:var(--ok)}
-.status i::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ok);animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
-@keyframes ping{75%,100%{transform:scale(2.6);opacity:0}}
-.hero h1{margin-top:26px;font-size:clamp(40px,5.6vw,70px);line-height:1.03;letter-spacing:-.038em;font-weight:600;max-width:15ch}
-.hero h1 .w{display:inline-block;white-space:pre}
-.js .hero h1 .w{opacity:0;transform:translateY(.45em);filter:blur(6px);animation:word .8s var(--ease) forwards;animation-delay:calc(var(--i) * 55ms + 120ms)}
-@keyframes word{to{opacity:1;transform:none;filter:none}}
-.hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:word .8s var(--ease) forwards,flow 6s linear infinite}
-.js .hero h1 .grad{animation:word .8s var(--ease) forwards,flow 6s linear infinite;animation-delay:calc(var(--i) * 55ms + 120ms),0s}
-@keyframes flow{to{background-position:200% 0}}
-.hero .lead{margin-top:24px;font-size:19px;line-height:1.6;color:var(--ink-2);max-width:54ch}
-.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.reassure{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px;color:var(--muted);font-size:14px}
-.reassure span{display:inline-flex;align-items:center;gap:7px}
-.reassure .ico{width:16px;height:16px;color:var(--ok)}
-
-/* Tarjeta de perfil: borde animado + inclinación con el mouse + flotación */
-.profile-wrap{perspective:1000px;animation:float 7s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.profile{position:relative;background:var(--surface);border-radius:24px;padding:12px;box-shadow:var(--shadow);transform-style:preserve-3d;transition:transform .5s var(--ease)}
-.profile::before{content:"";position:absolute;inset:-1px;border-radius:25px;padding:1px;background:conic-gradient(from var(--ang),var(--line) 0 60%,var(--accent) 75%,var(--accent-2) 85%,var(--line) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 6s linear infinite;pointer-events:none}
-@keyframes spin{to{--ang:360deg}}
-.profile .photo{position:relative;aspect-ratio:1/1;border-radius:15px;overflow:hidden;background:#E9D9C9}
-.profile .photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform .8s var(--ease)}
-.profile:hover .photo img{transform:scale(1.08)}
-.profile .shine{position:absolute;inset:0;background:radial-gradient(circle at var(--sx,50%) var(--sy,0%),rgba(255,255,255,.28),transparent 45%);pointer-events:none;mix-blend-mode:soft-light}
-.profile .info{padding:18px 10px 8px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
-.profile h2{font-size:21px;font-weight:600;letter-spacing:-.015em;line-height:1.2}
-.profile p{font-size:14px;color:var(--muted);margin-top:2px}
-.profile .loc{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);white-space:nowrap}
-.profile .loc .ico{width:15px;height:15px}
-.chip-float{position:absolute;display:flex;align-items:center;gap:8px;padding:9px 13px;border-radius:12px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);font-size:13px;font-weight:600;transform:translateZ(40px);white-space:nowrap}
-.chip-float .ico{width:16px;height:16px;color:var(--accent)}
-.chip-float.c1{left:-34px;top:18%;animation:bob 5s ease-in-out infinite}
-.chip-float.c2{right:-26px;top:58%;animation:bob 6s ease-in-out infinite reverse}
-.chip-float code{font-family:var(--mono);font-weight:500;color:var(--accent)}
-@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -8px}}
-
-/* Datos */
-.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:76px;background:color-mix(in srgb,var(--bg) 70%,transparent)}
-.fact{padding:26px 28px 26px 0}
-.fact + .fact{padding-left:28px;border-left:1px solid var(--line)}
-.fact b{display:block;font-size:30px;font-weight:600;letter-spacing:-.03em;line-height:1.15;font-variant-numeric:tabular-nums}
-.fact > span{display:block;color:var(--muted);font-size:15px;margin-top:2px}
-
-/* Cinta de herramientas */
-.marquee{margin-top:44px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-.marquee-track{display:flex;gap:12px;width:max-content;animation:marquee 38s linear infinite}
-.marquee:hover .marquee-track{animation-play-state:paused}
-.marquee span{display:inline-flex;align-items:center;gap:9px;padding:10px 18px;border-radius:99px;border:1px solid var(--line);background:var(--surface);font-weight:500;font-size:15px;white-space:nowrap}
-.marquee span i{width:8px;height:8px;border-radius:2px;background:var(--c)}
-@keyframes marquee{to{transform:translateX(-50%)}}
-
-/* ===== Secciones ===== */
-section.block{padding:108px 0;scroll-margin-top:68px}
-section.block.tight{padding-top:0}
-.block-grid{display:grid;grid-template-columns:240px minmax(0,1fr);gap:56px}
-.block-head{position:sticky;top:100px;align-self:start}
-.block-head h2{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--ink)}
-.block-head h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
-.block-head p{margin-top:8px;font-size:15px;color:var(--muted);max-width:24ch}
-.title{font-size:clamp(30px,3.4vw,44px);line-height:1.1;letter-spacing:-.03em;font-weight:600;max-width:22ch;text-wrap:balance}
-.intro{margin-top:16px;color:var(--ink-2);font-size:18px;max-width:62ch}
-
-/* Revelado al hacer scroll */
-.js [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--d,0) * 90ms)}
-.js [data-reveal].in{opacity:1;transform:none}
-
-/* Brillo que sigue al mouse en tarjetas */
-.spot{position:relative;isolation:isolate}
-.spot::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;opacity:0;transition:opacity .3s;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--accent) 10%,transparent),transparent 60%)}
-.spot:hover::before{opacity:1}
-
-/* Caso Zypuc */
-.case{margin-top:44px;background:var(--surface);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
-.case-visual{display:block;position:relative;overflow:hidden;background:linear-gradient(140deg,#EAF1FF 0%,#E3F7F4 100%);padding:46px 46px 0}
-:root[data-theme="dark"] .case-visual{background:linear-gradient(140deg,#13234A 0%,#0F2E34 100%)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .case-visual{background:linear-gradient(140deg,#13234A 0%,#0F2E34 100%)}}
-.case-visual::after{content:"Abrir la tienda";position:absolute;right:20px;top:18px;font-size:13px;font-weight:600;color:#0B5ED7;background:#fff;border-radius:99px;padding:6px 12px;box-shadow:0 6px 18px -8px rgba(11,94,215,.5);opacity:0;transform:translateY(-6px);transition:.3s var(--ease)}
-.case-visual:hover::after{opacity:1;transform:none}
-.browser{max-width:760px;margin:0 auto;border-radius:12px 12px 0 0;overflow:hidden;background:#fff;box-shadow:0 30px 60px -24px rgba(11,94,215,.45);border:1px solid rgba(15,23,42,.08);border-bottom:0;transition:transform .7s var(--ease)}
-.case-visual:hover .browser{transform:translateY(-8px)}
-.b-top{display:flex;align-items:center;gap:6px;height:38px;padding:0 14px;background:#F1F4F9;border-bottom:1px solid #E5E9F0}
-.b-top i{width:10px;height:10px;border-radius:50%;background:#D3DAE5}
-.b-top i:nth-child(1){background:#FF6B6B}.b-top i:nth-child(2){background:#FFC34D}.b-top i:nth-child(3){background:#3DD68C}
-.b-top span{margin:0 auto;font-family:var(--mono);font-size:12px;color:#5B6478;background:#fff;border:1px solid #E5E9F0;border-radius:6px;padding:2px 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:70%}
-.z-site{color:#0F172A;font-family:var(--font)}
-.z-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;border-bottom:1px solid #EEF1F6}
-.z-logo{font-weight:700;font-size:19px;letter-spacing:-.02em}.z-logo b{color:#0B5ED7}.z-logo span{color:#14B8A6}
-.z-links{display:flex;gap:16px;font-size:12px;color:#64748B}
-.z-wa{font-size:12px;font-weight:600;background:#0B5ED7;color:#fff;border-radius:7px;padding:6px 10px}
-.z-hero{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;padding:26px 22px 22px;align-items:center}
-.z-hero h4{font-size:28px;line-height:1.05;letter-spacing:-.03em;font-weight:700}
-.z-hero h4 em{font-style:normal;color:#14B8A6}
-.z-hero p{font-size:12.5px;color:#475569;margin-top:8px;line-height:1.5}
-.z-cats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.z-cats div{border:1px solid #E5EAF2;border-radius:10px;padding:10px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;background:#FAFBFD}
-.z-cats .ico{width:16px;height:16px;stroke:#0B5ED7}
-.z-prods{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 22px 22px}
-.z-prod{border:1px solid #E5EAF2;border-radius:12px;overflow:hidden}
-.z-prod .img{height:70px;background:linear-gradient(135deg,#E8F0FE,#DDF6F2);display:grid;place-items:center}
-.z-prod .img .ico{width:26px;height:26px;stroke:#0B5ED7;stroke-width:1.5}
-.z-prod div:last-child{padding:8px 10px;font-size:11.5px;color:#475569}
-.z-prod b{display:block;font-size:12.5px;color:#0F172A}
-.case-body{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;padding:40px 46px 46px}
-.case-body h3{font-size:14px;font-weight:600;color:var(--accent);letter-spacing:.01em}
-.case-body h3 + p{margin-top:6px;color:var(--ink-2)}
-.case-body .part + .part{margin-top:26px}
-.did{list-style:none;margin-top:12px;display:grid;gap:11px}
-.did li{display:flex;gap:12px;color:var(--ink-2)}
-.did .ico{margin-top:4px;color:var(--accent)}
-.specs div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
-.specs div:first-child{border-top:1px solid var(--line)}
-.specs dt{color:var(--muted)}
-.specs dd{font-weight:500;text-align:right}
-.case-body .btn{margin-top:24px;width:100%}
-
-/* Lista de trabajos */
-.works{margin-top:40px;display:grid;gap:12px}
-.work{display:grid;grid-template-columns:50px minmax(0,1fr) auto;gap:22px;align-items:center;padding:22px 24px;border-radius:18px;border:1px solid var(--line);background:var(--surface);transition:border-color .25s,transform .35s var(--ease)}
-.work:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));transform:translateX(6px)}
-.work .w-ico{width:50px;height:50px;border-radius:13px;display:grid;place-items:center;background:var(--soft);color:var(--accent);transition:transform .4s var(--ease)}
-.work:hover .w-ico{transform:rotate(-6deg) scale(1.06)}
-.work .w-ico .ico{width:22px;height:22px}
-.work h3{font-size:18px;font-weight:600;letter-spacing:-.015em;line-height:1.3}
-.work p{color:var(--ink-2);font-size:15.5px;margin-top:3px;max-width:60ch}
-.tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:240px}
-.tag{font-size:13px;font-weight:500;color:var(--ink-2);border:1px solid var(--line);background:var(--bg);border-radius:7px;padding:3px 9px;white-space:nowrap}
-
-/* Proceso */
-.steps{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s;position:relative}
-.step{padding:24px 22px 26px;border-radius:18px;border:1px solid var(--line);background:var(--surface);position:relative}
-.step .n{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:14px;font-weight:500}
-.step h3{margin-top:18px;font-size:17px;font-weight:600;letter-spacing:-.012em}
-.step p{margin-top:6px;color:var(--ink-2);font-size:15px}
-.step-line{position:absolute;left:40px;right:40px;top:42px;height:1.5px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--ease) .2s;z-index:0}
-.steps.in .step-line{transform:scaleX(1)}
-.step{z-index:1}
-
-/* Trayectoria */
-.timeline{list-style:none;margin-top:40px;position:relative}
-.timeline::before{content:"";position:absolute;left:7px;top:10px;bottom:10px;width:1.5px;background:var(--line)}
-.timeline::after{content:"";position:absolute;left:7px;top:10px;width:1.5px;height:calc(100% - 20px);background:linear-gradient(var(--accent),var(--accent-2));transform:scaleY(var(--p,0));transform-origin:top}
-.timeline li{position:relative;display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;padding:0 0 34px 40px}
-.timeline li:last-child{padding-bottom:0}
-.timeline li::before{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--line);transition:border-color .4s,background .4s;z-index:1}
-.timeline li.lit::before{border-color:var(--accent)}
-.timeline li.now::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 5px var(--soft)}
-.timeline time{font-family:var(--mono);font-size:14px;color:var(--muted);padding-top:3px}
-.timeline h3{font-size:18px;font-weight:600;letter-spacing:-.012em}
-.timeline p{color:var(--ink-2);font-size:16px;margin-top:4px;max-width:58ch}
-
-/* Servicios */
-.services{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.service{padding:30px;display:flex;flex-direction:column;border-radius:20px;border:1px solid var(--line);background:var(--surface);transition:border-color .25s,transform .35s var(--ease)}
-.service:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
-.service .s-ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--soft);color:var(--accent)}
-.service .s-ico .ico{width:22px;height:22px}
-.service h3{margin-top:18px;font-size:19px;font-weight:600;letter-spacing:-.015em}
-.service p{margin-top:8px;color:var(--ink-2);font-size:15.5px;flex:1}
-.service ul{list-style:none;margin-top:14px;display:grid;gap:6px;font-size:14.5px;color:var(--ink-2)}
-.service li{display:flex;gap:8px}
-.service li .ico{width:16px;height:16px;margin-top:4px;color:var(--ok)}
-.service .get{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);font-size:14px;color:var(--muted)}
-.service .get b{color:var(--ink);font-weight:600}
-.services-cta{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:15px}
-
-/* FAQ */
-.faq{margin-top:36px;border-top:1px solid var(--line)}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;font-weight:600;font-size:17px;cursor:pointer}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary .pm{position:relative;width:28px;height:28px;flex:none;border-radius:8px;border:1px solid var(--line);transition:transform .35s var(--ease),background .2s}
-.faq summary .pm::before,.faq summary .pm::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
-.faq summary .pm::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .35s var(--ease)}
-.faq details[open] summary .pm{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.faq details[open] summary .pm::after{transform:translate(-50%,-50%) rotate(0)}
-.faq .ans{padding:0 2px 22px;color:var(--ink-2);max-width:66ch;animation:open .45s var(--ease)}
-@keyframes open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-
-/* Contacto */
-.contact{padding:30px 0 110px}
-.contact-box{position:relative;overflow:hidden;background:#0F1B2D;color:#EDF1F7;border-radius:28px;padding:76px 64px;display:grid;grid-template-columns:minmax(0,1.4fr) auto;gap:40px;align-items:end}
-:root[data-theme="dark"] .contact-box{background:#14213A;border:1px solid #24334F}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .contact-box{background:#14213A;border:1px solid #24334F}}
-.contact-box canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9}
-.contact-box > div{position:relative;z-index:1}
-.contact-box h2{font-size:clamp(32px,4.4vw,56px);line-height:1.04;letter-spacing:-.038em;font-weight:600;max-width:15ch;text-wrap:balance}
-.contact-box p{margin-top:16px;max-width:46ch;color:rgba(237,241,247,.7);font-size:18px}
-.contact-actions{display:flex;flex-direction:column;gap:10px;min-width:250px}
-.contact-box .btn{height:54px}
-.contact-box .btn-accent{background:#2E62F0}
-.contact-box .btn-accent:hover{background:#4675FF}
-.contact-box .btn-ghost{border:1px solid rgba(237,241,247,.22);color:#EDF1F7}
-.contact-box .btn-ghost:hover{border-color:#EDF1F7}
-.contact-box small{display:block;text-align:center;font-size:13px;color:rgba(237,241,247,.6);margin-top:4px}
-footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:14px}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-footer a:hover{color:var(--ink)}
-
-/* Entrada del hero */
-.js .hero .status,.js .hero .lead,.js .hero .actions,.js .hero .reassure{opacity:0;animation:rise .9s var(--ease) forwards}
-.js .hero .status{animation-delay:.05s}.js .hero .lead{animation-delay:.55s}.js .hero .actions{animation-delay:.7s}.js .hero .reassure{animation-delay:.82s}
-.js .profile{opacity:0;animation:card 1.1s var(--ease) .35s forwards}
-@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@keyframes card{from{opacity:0;translate:0 30px;scale:.96}to{opacity:1;translate:0 0;scale:1}}
-
-/* ===== Responsive ===== */
-@media (max-width:1000px){
-  .hero-grid{grid-template-columns:minmax(0,1fr);gap:56px}
-  .profile-wrap{max-width:400px;margin:0 auto 0 34px}
-  .block-grid{grid-template-columns:minmax(0,1fr);gap:20px}
-  .block-head{position:static}
-  .case-body{grid-template-columns:minmax(0,1fr);gap:32px}
-  .steps{grid-template-columns:1fr 1fr}
-  .step-line{display:none}
-}
-@media (max-width:720px){
-  .wrap{padding:0 18px}
-  .nav ul{display:none}
-  .nav .wrap{gap:10px}
-  .nav nav{display:none}
-  .theme{margin-left:auto}
-  .hero{padding:44px 0 32px}
-  .profile-wrap{margin:0 26px}
-  .chip-float.c1{left:-22px}.chip-float.c2{right:-20px}
-  .facts{grid-template-columns:1fr;margin-top:56px}
-  .fact,.fact + .fact{padding:18px 0;border-left:0}
-  .fact + .fact{border-top:1px solid var(--line)}
-  section.block{padding:76px 0}
-  .case-visual{padding:22px 14px 0}
-  .case-visual::after{display:none}
-  .z-links{display:none}
-  .z-hero{grid-template-columns:1fr}
-  .z-prods{grid-template-columns:1fr 1fr}
-  .z-prods .z-prod:nth-child(3){display:none}
-  .case-body{padding:26px 22px 28px}
-  .work{grid-template-columns:42px minmax(0,1fr);gap:14px;padding:18px}
-  .work .w-ico{width:42px;height:42px}
-  .tags{grid-column:2;justify-content:flex-start;max-width:none}
-  .work:hover{transform:none}
-  .steps{grid-template-columns:1fr}
-  .timeline li{grid-template-columns:minmax(0,1fr);gap:4px;padding-left:34px}
-  .services{grid-template-columns:1fr}
-  .contact-box{grid-template-columns:minmax(0,1fr);padding:46px 24px;border-radius:22px}
-  .contact-actions{min-width:0}
-}
-
-/* Idioma */
-.lang{display:flex;align-items:center;height:38px;padding:3px;border-radius:9px;border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:600;color:var(--muted)}
-.lang span{padding:4px 8px;border-radius:6px;transition:background .2s,color .2s}
-html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{background:var(--ink);color:var(--bg)}
-.hero h1.done .w{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
-.hero h1.done .grad{animation:flow 6s linear infinite!important}
-
-/* Capturas reales según el tema */
-.browser .shot{display:block;width:100%;height:auto;background:#EAF1FF}
-.browser .shot-dark{display:none}
-:root[data-theme="dark"] .browser .shot-light{display:none}
-:root[data-theme="dark"] .browser .shot-dark{display:block}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .browser .shot-light{display:none}
-  :root:not([data-theme="light"]) .browser .shot-dark{display:block}
-}
-.browser{max-width:820px}
-
-/* Video de la marca */
-.case-video{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:center;padding:0 46px 46px;border-top:1px solid var(--line);padding-top:40px}
-.video-frame{position:relative;border-radius:16px;overflow:hidden;background:#05070d;aspect-ratio:16/9;box-shadow:0 24px 50px -24px rgba(11,94,215,.5)}
-.video-frame video{width:100%;height:100%;object-fit:cover;display:block}
-.sound{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:99px;background:rgba(10,14,24,.72);color:#fff;font-size:13px;font-weight:600;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15)}
-.sound .ico{width:16px;height:16px}
-.video-text h3{font-size:14px;font-weight:600;color:var(--accent)}
-.video-text p{margin-top:6px;color:var(--ink-2)}
-.video-text .btn{margin-top:20px}
-
-@media (max-width:1000px){.case-video{grid-template-columns:minmax(0,1fr);gap:22px}}
-@media (max-width:720px){
-  .case-video{padding:26px 22px 28px}
-  .lang{height:34px}
-  .nav .btn-sm{display:none}
-}
-
-@media (max-width:720px){.lang{margin-left:auto}.theme{margin-left:0}}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .js [data-reveal],.js .hero *,.js .profile{opacity:1!important;transform:none!important;filter:none!important}
-}
-</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Leo","jobTitle":"Desarrollador web y de apps, diseñador de marca","url":"https://djpacker17.github.io/Myself/","image":"https://djpacker17.github.io/Myself/media/avatar.jpg","address":{"@type":"PostalAddress","addressLocality":"Pucallpa","addressCountry":"PE"},"knowsLanguage":["es","en"],"knowsAbout":["Desarrollo web","Tiendas online","Identidad de marca","Luau","Roblox Studio","JavaScript","Mods de Minecraft"],"sameAs":["https://es.pro.fiverr.com/s/EmmQYNe","https://github.com/djpacker17"],"founder":{"@type":"OnlineStore","name":"Zypuc","url":"https://djpacker17.github.io/Zypuc/"}}
+</script>
 </head>
 <body>
-<a class="skip" href="#proyectos">Saltar al contenido</a>
+<a class="skip" href="#proyectos" data-i18n="skip">Saltar al contenido</a>
+
+<!-- ===================== Animación de apertura ===================== -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-bg"></div>
+  <canvas id="intro-canvas"></canvas>
+  <button class="intro-skip" id="intro-skip" type="button" data-i18n="intro.skip">Saltar intro</button>
+  <p class="intro-hello"><b>leo@pucallpa</b> ~ <span data-i18n="intro.hello">compilando lo que sé hacer</span></p>
+  <div class="intro-stage">
+    <div class="iw iw-js" data-i="0">
+      <div class="iw-top"><i></i><i></i><i></i><b>tienda.js</b><em>JavaScript</em></div>
+      <div class="iw-code" data-code="js"></div>
+      <div class="iw-out"><span class="run">▸ zypuc.abrir()</span><img src="media/zypuc-logo-oscuro.webp" alt="" width="721" height="260"></div>
+    </div>
+    <div class="iw iw-luau" data-i="1">
+      <div class="iw-top"><i></i><i></i><i></i><b>Menu.client.luau</b><em>Luau</em></div>
+      <div class="iw-code" data-code="luau"></div>
+      <div class="iw-out"><span class="run">▸ Tween:Play()</span><span class="io-btn" data-i18n="intro.play">JUGAR</span></div>
+    </div>
+    <div class="iw iw-html" data-i="2">
+      <div class="iw-top"><i></i><i></i><i></i><b>index.html</b><em>HTML · CSS</em></div>
+      <div class="iw-code" data-code="html"></div>
+      <div class="iw-out"><span class="run">▸ render</span><span class="io-title" data-i18n="intro.title">Hola, soy Leo.</span></div>
+    </div>
+  </div>
+  <div class="intro-bar">
+    <div class="row"><b data-i18n="intro.bar">Compilando el portafolio</b><span id="intro-pct">0 %</span></div>
+    <div class="intro-track"><i id="intro-track"></i></div>
+    <div class="intro-langs"><span data-l="js">JavaScript</span><span data-l="luau">Luau</span><span data-l="html">HTML</span><span data-l="css">CSS</span><span data-l="brand" data-i18n="intro.brand">Marca</span></div>
+  </div>
+</div>
+
 <div class="progress" id="progress"></div>
 <div class="bg-grid" aria-hidden="true"></div>
 <canvas id="squares" aria-hidden="true"></canvas>
@@ -431,28 +89,32 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
     <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-redo" viewBox="0 0 24 24"><path d="M20 11a8 8 0 10-2.3 5.7M20 5v6h-6"/></symbol>
+    <symbol id="i-lang" viewBox="0 0 24 24"><path d="M4 5h9M8.5 3v2M11 5c-1 4-3.5 7-7 9M6 9c1.5 2.5 3.5 4 6 5"/><path d="M13 21l4-10 4 10M14.5 17.5h5"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
     <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></symbol>
+    <symbol id="i-store" viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9M3 9a3 3 0 006 0 3 3 0 006 0 3 3 0 006 0M5 11.5V20h14v-8.5M10 20v-5h4v5"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 100 18c1 0 1.6-.8 1.6-1.6 0-1-.8-1.3-.8-2.2 0-.9.7-1.6 1.6-1.6H17a4 4 0 004-4c0-4.7-4-8.6-9-8.6z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/></symbol>
     <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 12l9-5M12 12L3 7M12 12v10"/></symbol>
-    <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></symbol>
-    <symbol id="i-desktop" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
-    <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
     <symbol id="i-blocks" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><path d="M17 13v8M13 17h8"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><path d="M3 4h2l2.5 11h11L21 7H6.4"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 012-2h8"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></symbol>
     <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
     <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 00-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></symbol>
     <symbol id="i-case" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></symbol>
-    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0116 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></symbol>
-    <symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7l4 3-1.5 4.5h-5L8 10z"/></symbol>
-    <symbol id="i-cake" viewBox="0 0 24 24"><path d="M4 20h16v-7H4zM4 16c2 1.3 4-1.3 6 0s4 1.3 6 0 3-1 4 0M12 13V9"/></symbol>
-    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13M12 8S10.5 3 8 4s0 4 4 4zm0 0s1.5-5 4-4 0 4-4 4z"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></symbol>
+    <symbol id="i-wand" viewBox="0 0 24 24"><path d="M4 20L15 9M14 4v3M19 9h-3M17.5 5.5l-2 2M18.5 13.5l-1-1"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 5l12 7-12 7z"/></symbol>
     <symbol id="i-mute" viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4zM22 9l-6 6M16 9l6 6"/></symbol>
     <symbol id="i-sound" viewBox="0 0 24 24"><path d="M11 5L6 9H3v6h3l5 4zM15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13"/></symbol>
-    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
   </defs>
 </svg>
 
@@ -462,57 +124,59 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
     <a class="brand" href="#inicio"><span class="mark" aria-hidden="true">L</span>Leo</a>
     <nav aria-label="Secciones">
       <ul>
-        <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
-        <li><a href="#proceso" data-i18n="nav.process">Proceso</a></li>
+        <li><a href="#proyectos" data-i18n="nav.work">Proyectos</a></li>
+        <li><a href="#demo" data-i18n="nav.demo">Pruébalo</a></li>
         <li><a href="#servicios" data-i18n="nav.services">Servicios</a></li>
+        <li><a href="#arma" data-i18n="nav.build">Cotizar</a></li>
         <li><a href="#preguntas" data-i18n="nav.faq">Preguntas</a></li>
       </ul>
     </nav>
-    <button class="lang" id="lang" aria-label="Cambiar idioma"><span data-l="es">ES</span><span data-l="en">EN</span></button>
-    <button class="theme" id="theme" aria-label="Cambiar entre modo claro y oscuro">
-      <svg class="ico moon"><use href="#i-moon"/></svg><svg class="ico sun"><use href="#i-sun"/></svg>
-    </button>
-    <a class="btn btn-primary btn-sm js-fiverr" href="#" target="_blank" rel="noopener" data-i18n="nav.hire">Contratar</a>
+    <button class="lang" id="lang" type="button" aria-label="Cambiar idioma"><span data-l="es">ES</span><span data-l="en">EN</span></button>
+    <button class="theme" id="theme" type="button" aria-label="Cambiar entre modo claro y oscuro"><svg class="ico moon"><use href="#i-moon"/></svg><svg class="ico sun"><use href="#i-sun"/></svg></button>
+    <a class="btn btn-primary btn-sm js-fiverr" href="https://es.pro.fiverr.com/s/EmmQYNe" target="_blank" rel="noopener" data-i18n="nav.hire">Contratar</a>
   </div>
 </header>
 
 <main id="inicio">
+  <!-- ===================== Hero ===================== -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
       <div class="hero-grid">
         <div>
           <span class="status"><i aria-hidden="true"></i><span data-i18n="hero.status">Disponible para nuevos proyectos</span></span>
-          <h1 id="hero-title" data-split data-i18n="hero.title">Páginas web y scripts a medida, <span class="grad">listos para usar.</span></h1>
-          <p class="lead" data-i18n="hero.lead">Soy Leo, desarrollador web y de software. Ayudo a negocios, emprendedores y creadores de Roblox a tener su web o su sistema funcionando. Programo desde 2023 y fundé Zypuc, una tienda online en Pucallpa.</p>
+          <h1 id="hero-title" data-split data-i18n="hero.title">Webs, marcas y scripts a medida, <span class="grad">listos para usar.</span></h1>
+          <p class="lead" data-i18n="hero.lead">Soy Leo, desarrollador web y de apps en Pucallpa, Perú. Hago páginas web, tiendas online, identidades de marca y scripts para Roblox y Minecraft. Mi proyecto más grande es Zypuc, una tienda online que diseñé, programé y lancé con mi equipo.</p>
           <div class="actions">
-            <a class="btn btn-accent js-fiverr magnetic" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-case"/></svg><span data-i18n="hero.cta">Contratar en Fiverr</span></a>
-            <a class="btn btn-line magnetic" href="#proyectos" data-i18n="hero.cta2">Ver proyectos</a>
+            <a class="btn btn-accent js-fiverr magnetic" href="https://es.pro.fiverr.com/s/EmmQYNe" target="_blank" rel="noopener"><svg class="ico"><use href="#i-case"/></svg><span data-i18n="hero.cta">Contratar en Fiverr</span></a>
+            <a class="btn btn-line magnetic" href="#arma"><svg class="ico"><use href="#i-wand"/></svg><span data-i18n="hero.cta2">Arma tu proyecto en 1 minuto</span></a>
           </div>
           <div class="reassure">
             <span><svg class="ico"><use href="#i-shield"/></svg><span data-i18n="hero.r1">Pago protegido por Fiverr</span></span>
-            <span><svg class="ico"><use href="#i-chat"/></svg><span data-i18n="hero.r2">Primero conversamos tu idea</span></span>
+            <span><svg class="ico"><use href="#i-redo"/></svg><span data-i18n="hero.r2">Revisiones hasta que quedes conforme</span></span>
+            <span><svg class="ico"><use href="#i-lang"/></svg><span data-i18n="hero.r3">Español e inglés</span></span>
           </div>
         </div>
         <div class="profile-wrap">
           <aside class="profile" id="profile" aria-label="Perfil">
-            <div class="photo"><img src="media/avatar.jpg" alt="Retrato ilustrado de Leo" width="640" height="640" data-i18n-alt="hero.alt"><span class="shine"></span></div>
+            <div class="photo"><img src="media/avatar.jpg" alt="Retrato ilustrado de Leo" width="800" height="800" data-i18n-alt="hero.alt" fetchpriority="high"><span class="shine"></span></div>
             <div class="info">
               <div>
                 <h2>Leo</h2>
-                <p data-i18n="hero.role">Desarrollador web y de software</p>
+                <p data-i18n="hero.role">Desarrollador web y de apps</p>
               </div>
               <span class="loc"><svg class="ico"><use href="#i-pin"/></svg>Pucallpa, Perú</span>
             </div>
             <span class="chip-float c1" aria-hidden="true"><code>&lt;/&gt;</code>JavaScript</span>
             <span class="chip-float c2" aria-hidden="true"><svg class="ico"><use href="#i-cube"/></svg>Luau · Roblox</span>
+            <span class="chip-float c3" aria-hidden="true"><img src="media/zypuc-icono.webp" alt="" width="18" height="18"><span data-i18n="hero.chip3">Marca Zypuc</span></span>
           </aside>
         </div>
       </div>
 
       <div class="facts" data-reveal>
-        <div class="fact"><b><span data-count="3">0</span>+ <span data-i18n="facts.years">años</span></b><span data-i18n="facts.years2">programando de forma autodidacta</span></div>
-        <div class="fact"><b><span data-count="4">0</span> <span data-i18n="facts.spec">especialidades</span></b><span data-i18n="facts.spec2">web, apps de PC, JavaScript y Roblox</span></div>
-        <div class="fact"><b><span data-count="112">0</span> <span data-i18n="facts.prod">productos</span></b><span data-i18n="facts.prod2">publicados con foto real en Zypuc</span></div>
+        <div class="fact"><b><span data-count="3">0</span>+ <span data-i18n="facts.y">años</span></b><span data-i18n="facts.y2">programando de forma autodidacta</span></div>
+        <div class="fact"><b><span data-count="112">0</span> <span data-i18n="facts.p">productos</span></b><span data-i18n="facts.p2">publicados con foto real en Zypuc</span></div>
+        <div class="fact"><b><span data-count="16">0</span> <span data-i18n="facts.a">logros secretos</span></b><span data-i18n="facts.a2">y 2 minijuegos dentro de la tienda</span></div>
       </div>
 
       <div class="marquee" aria-label="Herramientas">
@@ -523,27 +187,40 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
           <span style="--c:#00A2FF"><i></i>Luau</span>
           <span style="--c:#7A8599"><i></i>Roblox Studio</span>
           <span style="--c:#24292F"><i></i>GitHub Pages</span>
-          <span style="--c:#25D366"><i></i><span data-i18n="mq.wa">Integración con WhatsApp</span></span>
+          <span style="--c:#2088FF"><i></i>GitHub Actions</span>
+          <span style="--c:#25D366"><i></i><span data-i18n="mq.wa">Pedidos por WhatsApp</span></span>
+          <span style="--c:#0F9D58"><i></i>Google Sheets</span>
+          <span style="--c:#A78BFA"><i></i><span data-i18n="mq.pwa">Webs instalables como app</span></span>
           <span style="--c:#1FC7A8"><i></i>Filmora</span>
-          <span style="--c:#A78BFA"><i></i><span data-i18n="mq.pwa">Web instalable como app</span></span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROYECTO DESTACADO -->
+  <!-- ===================== Garantías ===================== -->
+  <section class="promises" aria-label="Cómo trabajo">
+    <div class="wrap promise-row">
+      <div class="promise" data-reveal><span class="p-ico"><svg class="ico"><use href="#i-clock"/></svg></span><div><h3 data-i18n="pr.1">Plazos honestos</h3><p data-i18n="pr.1t">Te digo un plazo real desde el inicio.</p></div></div>
+      <div class="promise" data-reveal style="--d:1"><span class="p-ico"><svg class="ico"><use href="#i-redo"/></svg></span><div><h3 data-i18n="pr.2">Revisiones incluidas</h3><p data-i18n="pr.2t">Ajustamos hasta que te guste el resultado.</p></div></div>
+      <div class="promise" data-reveal style="--d:2"><span class="p-ico"><svg class="ico"><use href="#i-shield"/></svg></span><div><h3 data-i18n="pr.3">Pago protegido</h3><p data-i18n="pr.3t">Fiverr guarda tu pago hasta la entrega.</p></div></div>
+      <div class="promise" data-reveal style="--d:3"><span class="p-ico"><svg class="ico"><use href="#i-lang"/></svg></span><div><h3 data-i18n="pr.4">Español e inglés</h3><p data-i18n="pr.4t">Hablamos en el idioma que prefieras.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ===================== Proyecto destacado ===================== -->
   <section class="block" id="proyectos" aria-labelledby="proy-title">
     <div class="wrap block-grid">
       <div class="block-head" data-reveal>
         <h2 data-i18n="p.h">Proyecto destacado</h2>
-        <p data-i18n="p.hs">Diseño, desarrollo y lanzamiento.</p>
+        <p data-i18n="p.hs">Diseño, desarrollo, marca y lanzamiento.</p>
       </div>
       <div>
         <h3 class="title" id="proy-title" data-reveal data-i18n="p.t">Zypuc, una tienda online construida de principio a fin.</h3>
-        <p class="intro" data-reveal style="--d:1" data-i18n="p.i">Fundé Zypuc con mi equipo para acercar productos de todo el Perú a Pucallpa. Me encargué de la tienda web, la marca y su presentación al público.</p>
+        <p class="intro-text" data-reveal style="--d:1" data-i18n="p.i">Fundé Zypuc con mi equipo para acercar productos de todo el Perú a Pucallpa. Me encargué de la tienda web, la marca, la mascota y su presentación al público.</p>
 
         <article class="case" data-reveal style="--d:2">
           <a class="case-visual" href="https://djpacker17.github.io/Zypuc/" target="_blank" rel="noopener" aria-label="Abrir la tienda Zypuc en una pestaña nueva">
+            <span class="open-chip" data-i18n="p.open">Abrir la tienda</span>
             <div class="browser">
               <div class="b-top" aria-hidden="true"><i></i><i></i><i></i><span>djpacker17.github.io/Zypuc</span></div>
               <img class="shot shot-light" src="media/zypuc-claro.webp" alt="Portada real de la tienda Zypuc en modo claro" width="1160" height="720" loading="lazy" data-i18n-alt="p.altL">
@@ -553,21 +230,22 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
           <div class="case-body">
             <div>
               <div class="part">
-                <h3 data-i18n="p.c1">El reto</h3>
+                <h3 class="k" data-i18n="p.c1">El reto</h3>
                 <p data-i18n="p.c1t">En Pucallpa no siempre se encuentran los productos de las tiendas grandes del país, y comprar en línea a otra ciudad genera desconfianza.</p>
               </div>
               <div class="part">
-                <h3 data-i18n="p.c2">La solución</h3>
+                <h3 class="k" data-i18n="p.c2">La solución</h3>
                 <ul class="did">
-                  <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s1">Catálogo de 112 productos con foto real, ordenado en tecnología, deporte, repostería y regalitos.</span></li>
-                  <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s2">Comparador de precios: cada producto muestra cuánto cuesta en otras tiendas, como Coolbox u Oechsle.</span></li>
-                  <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s3">Carrito, comparación de productos y pedidos directos por WhatsApp.</span></li>
-                  <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s4">Modo claro y oscuro, instalable como app y un «Modo stand» para mostrar los productos en la feria.</span></li>
+                  <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s1">Catálogo de 112 productos con foto real en tecnología, deporte, repostería y regalitos.</span></li>
+                  <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s2">Comparador de precios que se actualiza solo cada 6 horas: la comparación solo aparece si es verdad y reciente.</span></li>
+                  <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s3">Carrito, cupones, «Rastrea tu pedido» y pedidos directos por WhatsApp, conectados a Google Sheets.</span></li>
+                  <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s4">Zypi, una mascota interactiva con 16 logros secretos, y dos minijuegos: Zypi Catch y Memoria Zypuc.</span></li>
+                  <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s5">Modo claro y oscuro, instalable como app y un «Modo stand» para la feria.</span></li>
                 </ul>
               </div>
               <div class="part">
-                <h3 data-i18n="p.c3">El resultado</h3>
-                <p data-i18n="p.c3t">La tienda está publicada y en uso, con ahorros visibles frente a otras tiendas. La presentamos al público en un stand de la Feria de Emprendimiento.</p>
+                <h3 class="k" data-i18n="p.c3">El resultado</h3>
+                <p data-i18n="p.c3t">La tienda está publicada y en uso. La presentamos al público en un stand de la Feria de Emprendimiento el 21 de octubre de 2026.</p>
               </div>
             </div>
             <div>
@@ -575,20 +253,44 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
                 <div><dt data-i18n="p.k1">Rol</dt><dd data-i18n="p.v1">Fundador y desarrollador</dd></div>
                 <div><dt data-i18n="p.k2">Año</dt><dd>2026</dd></div>
                 <div><dt data-i18n="p.k3">Tecnologías</dt><dd>HTML, CSS, JavaScript</dd></div>
-                <div><dt data-i18n="p.k4">Catálogo</dt><dd data-i18n="p.v4">112 productos</dd></div>
-                <div><dt data-i18n="p.k5">Pedidos</dt><dd>WhatsApp</dd></div>
+                <div><dt data-i18n="p.k4">Datos</dt><dd>Google Sheets</dd></div>
+                <div><dt data-i18n="p.k5">Precios</dt><dd data-i18n="p.v5">GitHub Actions, cada 6 h</dd></div>
+                <div><dt data-i18n="p.k6">Pedidos</dt><dd>WhatsApp</dd></div>
               </dl>
               <a class="btn btn-primary" href="https://djpacker17.github.io/Zypuc/" target="_blank" rel="noopener"><span data-i18n="p.visit">Visitar la tienda</span><svg class="ico arrow"><use href="#i-arrow"/></svg></a>
             </div>
           </div>
+
+          <div class="brandkit">
+            <div class="brandkit-head">
+              <div>
+                <h3 class="k" data-i18n="p.bk">Identidad de marca</h3>
+                <p data-i18n="p.bkt">Logo, mascota, colores, tipografías e ícono de app, reunidos en un manual de marca.</p>
+              </div>
+              <div class="palette" aria-label="Colores de Zypuc">
+                <button type="button" style="--c:#0B5ED7" data-copy="#0B5ED7" aria-label="Copiar azul eléctrico #0B5ED7"></button>
+                <button type="button" style="--c:#14B8A6" data-copy="#14B8A6" aria-label="Copiar turquesa #14B8A6"></button>
+                <button type="button" style="--c:#F59E0B" data-copy="#F59E0B" aria-label="Copiar ámbar #F59E0B"></button>
+                <button type="button" style="--c:#0F172A" data-copy="#0F172A" aria-label="Copiar azul noche #0F172A"></button>
+                <button type="button" style="--c:#FFFFFF" data-copy="#FFFFFF" aria-label="Copiar blanco #FFFFFF"></button>
+              </div>
+            </div>
+            <div class="kit">
+              <figure class="k-logo"><img src="media/zypuc-logo-claro.webp" alt="Logo de Zypuc: Zypi y el nombre Zypuc" width="721" height="260" loading="lazy" data-i18n-alt="p.altLogo"><figcaption data-i18n="p.f1">Logo</figcaption></figure>
+              <figure class="k-zypi k-dark"><img src="media/zypi.svg" alt="Zypi, la mascota de Zypuc" width="120" height="128" loading="lazy" data-i18n-alt="p.altZypi"><figcaption data-i18n="p.f2">Mascota Zypi</figcaption></figure>
+              <figure class="k-icon"><img src="media/zypuc-icono.webp" alt="Ícono de la app de Zypuc" width="100" height="100" loading="lazy" data-i18n-alt="p.altIcon"><figcaption data-i18n="p.f3">Ícono de la app</figcaption></figure>
+              <figure class="k-banner"><img src="media/zypuc-banner.webp" alt="Imagen para compartir de Zypuc con Zypi y el eslogan Lo que buscas, cerca." width="1200" height="630" loading="lazy" data-i18n-alt="p.altBanner"><figcaption data-i18n="p.f4">Imagen para redes y WhatsApp</figcaption></figure>
+            </div>
+          </div>
+
           <div class="case-video">
             <div class="video-frame">
-              <video id="intro" src="media/zypuc-intro.mp4" poster="media/zypuc-intro-poster.jpg" muted loop playsinline preload="metadata" aria-label="Intro animada de la marca Zypuc"></video>
-              <button class="sound" id="sound" aria-pressed="false"><svg class="ico"><use href="#i-mute"/></svg><span data-i18n="p.sound">Activar sonido</span></button>
+              <video id="intro-video" src="media/zypuc-intro.mp4" poster="media/zypuc-intro-poster.jpg" muted loop playsinline preload="none" aria-label="Intro animada de la marca Zypuc"></video>
+              <button class="sound" id="sound" type="button" aria-pressed="false"></button>
             </div>
             <div class="video-text">
-              <h3 data-i18n="p.vh">Identidad de marca y video</h3>
-              <p data-i18n="p.vt">Creamos el logo, la mascota Zypi, los colores y una película de presentación. Esta es su intro animada.</p>
+              <h3 class="k" data-i18n="p.vh">Video de marca</h3>
+              <p data-i18n="p.vt">También hicimos una película de presentación. Esta es su intro animada, con Zypi como protagonista.</p>
               <a class="btn btn-line" href="https://djpacker17.github.io/Zypuc/#peli" target="_blank" rel="noopener"><svg class="ico"><use href="#i-film"/></svg><span data-i18n="p.movie">Ver la película completa</span></a>
             </div>
           </div>
@@ -597,47 +299,195 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
     </div>
   </section>
 
-  <!-- OTROS TRABAJOS -->
-  <section class="block tight" aria-labelledby="otros-title">
+  <!-- ===================== Pruébalo ===================== -->
+  <section class="block tight" id="demo" aria-labelledby="demo-title">
     <div class="wrap block-grid">
       <div class="block-head" data-reveal>
-        <h2 data-i18n="o.h">Otros trabajos</h2>
-        <p data-i18n="o.hs">Programación, automatización y contenido.</p>
+        <h2 data-i18n="d.h">Pruébalo</h2>
+        <p data-i18n="d.hs">Código a la izquierda, resultado a la derecha.</p>
       </div>
       <div>
-        <h3 class="title" id="otros-title" data-reveal data-i18n="o.t">Lo que he construido en otras plataformas.</h3>
-        <div class="works">
-          <article class="work spot" data-reveal>
-            <div class="w-ico"><svg class="ico"><use href="#i-cube"/></svg></div>
-            <div><h3 data-i18n="o.1">Scripts para Roblox</h3><p data-i18n="o.1t">Interfaces animadas, sistemas de combate y sistemas de movimiento para juegos. Es lo que más tiempo llevo haciendo.</p></div>
-            <div class="tags"><span class="tag">Luau</span><span class="tag">Roblox Studio</span></div>
+        <h3 class="title" id="demo-title" data-reveal data-i18n="d.t">Mira el código y juega con el resultado.</h3>
+        <p class="intro-text" data-reveal style="--d:1" data-i18n="d.i">Tres ejemplos pequeños de lo que hago. Cambia de pestaña, toca los botones y mira cómo se ilumina la línea de código que lo hace funcionar.</p>
+        <div class="tabs" role="tablist" aria-label="Ejemplos" data-reveal style="--d:2">
+          <button class="tab" role="tab" id="tab-rbx" aria-controls="lab" aria-selected="true" data-demo="rbx"><svg class="ico"><use href="#i-cube"/></svg><span data-i18n="d.t1">Interfaz de Roblox</span></button>
+          <button class="tab" role="tab" id="tab-shop" aria-controls="lab" aria-selected="false" data-demo="shop" tabindex="-1"><svg class="ico"><use href="#i-store"/></svg><span data-i18n="d.t2">Tienda online</span></button>
+          <button class="tab" role="tab" id="tab-brand" aria-controls="lab" aria-selected="false" data-demo="brand" tabindex="-1"><svg class="ico"><use href="#i-palette"/></svg><span data-i18n="d.t3">Identidad de marca</span></button>
+        </div>
+        <div class="lab" id="lab" role="tabpanel" aria-labelledby="tab-rbx" data-reveal style="--d:2">
+          <div class="code">
+            <div class="code-top"><i></i><i></i><i></i><b id="code-file">Ajustes.client.luau</b><span class="lang-tag" id="code-lang">Luau</span></div>
+            <pre id="code-pre" aria-label="Código del ejemplo"></pre>
+          </div>
+          <div class="result">
+            <div class="result-top"><span class="dot"></span><span data-i18n="d.live">Resultado en vivo</span></div>
+            <div class="result-stage">
+              <!-- Demo Roblox -->
+              <div class="demo rbx" data-demo="rbx" id="rbx">
+                <div class="rbx-title"><span data-i18n="d.rTitle">AJUSTES</span><span data-i18n="d.rSub">Mi juego</span></div>
+                <div class="rbx-row"><span data-i18n="d.rMusic">Música</span><button class="rbx-toggle" type="button" role="switch" aria-checked="true" data-line="music" aria-label="Música"></button></div>
+                <div class="rbx-row"><span data-i18n="d.rShadow">Sombras</span><button class="rbx-toggle" type="button" role="switch" aria-checked="false" data-line="shadow" aria-label="Sombras"></button></div>
+                <div class="rbx-row"><span data-i18n="d.rSens">Sensibilidad</span><input class="rbx-range" type="range" min="1" max="10" value="6" data-line="sens" aria-label="Sensibilidad"></div>
+                <div class="rbx-row"><span data-i18n="d.rTheme">Tema</span><span class="rbx-colors" data-line="theme">
+                  <button type="button" style="--c:#00A2FF" data-c="#00A2FF" aria-pressed="true" aria-label="Azul"></button>
+                  <button type="button" style="--c:#FF3B6B" data-c="#FF3B6B" aria-pressed="false" aria-label="Rosado"></button>
+                  <button type="button" style="--c:#2DD46B" data-c="#2DD46B" aria-pressed="false" aria-label="Verde"></button>
+                  <button type="button" style="--c:#FFB020" data-c="#FFB020" aria-pressed="false" aria-label="Dorado"></button>
+                </span></div>
+                <button class="rbx-play" type="button" data-line="play" data-i18n="d.rPlay">JUGAR</button>
+              </div>
+              <!-- Demo tienda -->
+              <div class="demo shop" data-demo="shop" id="shop" hidden>
+                <div class="shop-card">
+                  <div class="shop-img"><span class="shop-save" data-i18n="d.sSave">Ahorras S/ 24.10</span><img src="media/demo-audifonos.jpg" alt="Audífonos JBL Tune 520BT" width="768" height="768" loading="lazy"></div>
+                  <h4 data-i18n="d.sName">Audífonos JBL Tune 520BT Bluetooth</h4>
+                  <div class="shop-price"><b>S/ 164.90</b><s data-i18n="d.sRef">En Coolbox S/ 189.00</s></div>
+                  <div class="shop-qty"><button type="button" data-q="-1" aria-label="Quitar uno">−</button><output id="shop-qty">1</output><button type="button" data-q="1" aria-label="Agregar uno">+</button></div>
+                  <button class="shop-add" type="button" id="shop-add" data-line="add"><svg class="ico"><use href="#i-cart"/></svg><span data-i18n="d.sAdd">Añadir al carrito</span></button>
+                </div>
+                <div class="shop-cart"><span><span data-i18n="d.sCart">Carrito</span><span class="badge" id="shop-badge">0</span></span><button class="shop-wa" type="button" id="shop-wa" data-line="wa" disabled data-i18n="d.sWa">Pedir por WhatsApp</button></div>
+                <p class="wa-bubble" id="wa-bubble" hidden></p>
+              </div>
+              <!-- Demo marca -->
+              <div class="demo brand-demo" data-demo="brand" id="brand" hidden>
+                <div class="bd-logo" data-line="logo"><img class="bd-light" src="media/zypuc-logo-claro.webp" alt="Logo de Zypuc" width="721" height="260" loading="lazy"><img class="bd-dark" src="media/zypuc-logo-oscuro.webp" alt="" width="721" height="260" loading="lazy"></div>
+                <div class="bd-swatches" data-line="colors">
+                  <button type="button" style="--c:#0B5ED7" data-copy="#0B5ED7">0B5ED7</button>
+                  <button type="button" style="--c:#14B8A6;--t:#062A26" data-copy="#14B8A6">14B8A6</button>
+                  <button type="button" style="--c:#F59E0B;--t:#2A1C00" data-copy="#F59E0B">F59E0B</button>
+                  <button type="button" style="--c:#0F172A" data-copy="#0F172A">0F172A</button>
+                  <button type="button" style="--c:#FFFFFF;--t:#0F172A" data-copy="#FFFFFF">FFFFFF</button>
+                </div>
+                <div class="bd-type" data-line="type"><strong data-i18n="d.bSlogan">Lo que buscas, <em>cerca.</em></strong><small data-i18n="d.bFonts">Fredoka para títulos · Nunito Sans para textos</small></div>
+                <button class="bd-toggle" type="button" id="bd-toggle" data-line="dark" data-i18n="d.bDark">Ver en fondo oscuro</button>
+              </div>
+            </div>
+            <p class="result-note" id="result-note">Recreación web de una interfaz hecha en Roblox Studio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Servicios ===================== -->
+  <section class="block tight" id="servicios" aria-labelledby="serv-title">
+    <div class="wrap block-grid">
+      <div class="block-head" data-reveal>
+        <h2 data-i18n="s.h">Servicios</h2>
+        <p data-i18n="s.hs">Disponibles a través de Fiverr.</p>
+      </div>
+      <div>
+        <h3 class="title" id="serv-title" data-reveal data-i18n="s.t">En qué puedo ayudarte.</h3>
+        <div class="services">
+          <article class="service spot" data-reveal>
+            <span class="s-ico"><svg class="ico"><use href="#i-globe"/></svg></span>
+            <h3 data-i18n="s.1">Páginas web y tiendas online</h3>
+            <p data-i18n="s.1t">Para que tu negocio tenga presencia en internet, venda y te contacten fácil.</p>
+            <ul><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.1a">Adaptada al celular</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.1b">Carrito y pedidos por WhatsApp</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.1c">Publicada con su propio enlace</span></li></ul>
+            <p class="proof" data-i18n="s.1p">Ya lo hice: <b>la tienda Zypuc</b></p>
+            <a class="ask" href="#arma" data-pick="web"><span data-i18n="s.ask">Cotizar este servicio</span><svg class="ico"><use href="#i-right"/></svg></a>
           </article>
-          <article class="work spot" data-reveal style="--d:1">
-            <div class="w-ico"><svg class="ico"><use href="#i-blocks"/></svg></div>
-            <div><h3 data-i18n="o.2">Mods de Minecraft</h3><p data-i18n="o.2t">Modificaciones e interfaces con temas y colores personalizables.</p></div>
-            <div class="tags"><span class="tag">JavaScript</span></div>
+          <article class="service spot" data-reveal style="--d:1">
+            <span class="s-ico"><svg class="ico"><use href="#i-palette"/></svg></span>
+            <h3 data-i18n="s.2">Identidad de marca</h3>
+            <p data-i18n="s.2t">Para que tu proyecto se vea profesional y la gente lo recuerde.</p>
+            <ul><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.2a">Logo, colores y tipografías</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.2b">Mascota e ícono de app</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.2c">Manual de marca</span></li></ul>
+            <p class="proof" data-i18n="s.2p">Ya lo hice: <b>la marca de Zypuc y su mascota Zypi</b></p>
+            <a class="ask" href="#arma" data-pick="brand"><span data-i18n="s.ask">Cotizar este servicio</span><svg class="ico"><use href="#i-right"/></svg></a>
           </article>
-          <article class="work spot" data-reveal style="--d:2">
-            <div class="w-ico"><svg class="ico"><use href="#i-code"/></svg></div>
-            <div><h3 data-i18n="o.3">Scripts de navegador</h3><p data-i18n="o.3t">Programas con interfaz propia que automatizan tareas dentro de páginas web.</p></div>
-            <div class="tags"><span class="tag">JavaScript</span><span class="tag" data-i18n="o.3k">Automatización</span></div>
+          <article class="service spot" data-reveal style="--d:2">
+            <span class="s-ico"><svg class="ico"><use href="#i-cube"/></svg></span>
+            <h3 data-i18n="s.3">Scripts para Roblox</h3>
+            <p data-i18n="s.3t">Para que tu juego tenga las mecánicas que imaginaste, funcionando bien.</p>
+            <ul><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.3a">Interfaces y menús animados</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.3b">Combate y movimiento</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.3c">Código ordenado y comentado</span></li></ul>
+            <p class="proof" data-i18n="s.3p">Ya lo hice: <b>scripts en Luau desde 2023</b></p>
+            <a class="ask" href="#arma" data-pick="roblox"><span data-i18n="s.ask">Cotizar este servicio</span><svg class="ico"><use href="#i-right"/></svg></a>
           </article>
-          <article class="work spot" data-reveal style="--d:3">
-            <div class="w-ico"><svg class="ico"><use href="#i-desktop"/></svg></div>
-            <div><h3 data-i18n="o.4">Aplicaciones de escritorio</h3><p data-i18n="o.4t">Programas para computadora hechos desde cero.</p></div>
-            <div class="tags"><span class="tag" data-i18n="o.4k">Apps de PC</span></div>
+          <article class="service spot" data-reveal>
+            <span class="s-ico"><svg class="ico"><use href="#i-blocks"/></svg></span>
+            <h3 data-i18n="s.4">Mods de Minecraft</h3>
+            <p data-i18n="s.4t">Para cambiar o ampliar cómo funciona tu mundo.</p>
+            <ul><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.4a">Mods en JavaScript</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.4b">Menús con temas y colores</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.4c">Instrucciones para instalarlo</span></li></ul>
+            <p class="proof" data-i18n="s.4p">Ya lo hice: <b>mods con temas personalizables</b></p>
+            <a class="ask" href="#arma" data-pick="minecraft"><span data-i18n="s.ask">Cotizar este servicio</span><svg class="ico"><use href="#i-right"/></svg></a>
           </article>
-          <article class="work spot" data-reveal style="--d:4">
-            <div class="w-ico"><svg class="ico"><use href="#i-film"/></svg></div>
-            <div><h3 data-i18n="o.5">Video e identidad de marca</h3><p data-i18n="o.5t">Edición de video y kit de marca completo para Zypuc, con apoyo de herramientas de IA.</p></div>
-            <div class="tags"><span class="tag">Filmora</span><span class="tag">Branding</span></div>
+          <article class="service spot" data-reveal style="--d:1">
+            <span class="s-ico"><svg class="ico"><use href="#i-bolt"/></svg></span>
+            <h3 data-i18n="s.5">Automatización con JavaScript</h3>
+            <p data-i18n="s.5t">Para dejar de repetir a mano las mismas tareas en una página web.</p>
+            <ul><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.5a">Scripts de navegador</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.5b">Hechos para tu caso</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.5c">Guía de instalación</span></li></ul>
+            <p class="proof" data-i18n="s.5p">Ya lo hice: <b>scripts con interfaz propia</b></p>
+            <a class="ask" href="#arma" data-pick="auto"><span data-i18n="s.ask">Cotizar este servicio</span><svg class="ico"><use href="#i-right"/></svg></a>
+          </article>
+          <article class="service spot" data-reveal style="--d:2">
+            <span class="s-ico"><svg class="ico"><use href="#i-film"/></svg></span>
+            <h3 data-i18n="s.6">Edición de video</h3>
+            <p data-i18n="s.6t">Para presentar tu marca o proyecto con un video corto y cuidado.</p>
+            <ul><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.6a">Intros animadas</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.6b">Cortes, textos y música</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.6c">Formato para redes</span></li></ul>
+            <p class="proof" data-i18n="s.6p">Ya lo hice: <b>la intro y la película de Zypuc</b></p>
+            <a class="ask" href="#arma" data-pick="video"><span data-i18n="s.ask">Cotizar este servicio</span><svg class="ico"><use href="#i-right"/></svg></a>
           </article>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROCESO -->
+  <!-- ===================== Arma tu proyecto ===================== -->
+  <section class="block tight" id="arma" aria-labelledby="arma-title">
+    <div class="wrap block-grid">
+      <div class="block-head" data-reveal>
+        <h2 data-i18n="b.h">Arma tu proyecto</h2>
+        <p data-i18n="b.hs">Sin precios fijos: cada proyecto recibe su propia propuesta.</p>
+      </div>
+      <div>
+        <h3 class="title" id="arma-title" data-reveal data-i18n="b.t">Cuéntame qué necesitas y te preparo una propuesta.</h3>
+        <p class="intro-text" data-reveal style="--d:1" data-i18n="b.i">Elige las opciones y se arma solo el mensaje. Lo copias, lo pegas en Fiverr y te respondo con alcance, plazo y precio.</p>
+        <div class="builder" data-reveal style="--d:2">
+          <form class="b-form" id="b-form" autocomplete="off" onsubmit="return false">
+            <fieldset class="b-step">
+              <legend><span class="n">1</span><span data-i18n="b.q1">¿Qué necesitas?</span> <small data-i18n="b.q1s">Puedes elegir varias</small></legend>
+              <div class="chips" id="b-types">
+                <button type="button" class="chip" data-type="web" aria-pressed="false"><svg class="ico"><use href="#i-globe"/></svg><span data-i18n="b.web">Página web</span></button>
+                <button type="button" class="chip" data-type="store" aria-pressed="false"><svg class="ico"><use href="#i-store"/></svg><span data-i18n="b.store">Tienda online</span></button>
+                <button type="button" class="chip" data-type="brand" aria-pressed="false"><svg class="ico"><use href="#i-palette"/></svg><span data-i18n="b.brand">Logo y marca</span></button>
+                <button type="button" class="chip" data-type="roblox" aria-pressed="false"><svg class="ico"><use href="#i-cube"/></svg><span data-i18n="b.roblox">Script de Roblox</span></button>
+                <button type="button" class="chip" data-type="minecraft" aria-pressed="false"><svg class="ico"><use href="#i-blocks"/></svg><span data-i18n="b.minecraft">Mod de Minecraft</span></button>
+                <button type="button" class="chip" data-type="auto" aria-pressed="false"><svg class="ico"><use href="#i-bolt"/></svg><span data-i18n="b.auto">Automatización</span></button>
+                <button type="button" class="chip" data-type="video" aria-pressed="false"><svg class="ico"><use href="#i-film"/></svg><span data-i18n="b.video">Video</span></button>
+              </div>
+            </fieldset>
+            <fieldset class="b-step">
+              <legend><span class="n">2</span><span data-i18n="b.q2">¿Qué debe tener?</span> <small data-i18n="b.q2s">Opcional</small></legend>
+              <div class="chips" id="b-extras"></div>
+            </fieldset>
+            <fieldset class="b-step">
+              <legend><span class="n">3</span><span data-i18n="b.q3">¿Para cuándo?</span></legend>
+              <div class="chips" id="b-when" role="radiogroup">
+                <button type="button" class="chip" role="radio" data-when="calm" aria-checked="false" data-i18n="b.w1">Sin apuro</button>
+                <button type="button" class="chip" role="radio" data-when="weeks" aria-checked="true" data-i18n="b.w2">En 1 o 2 semanas</button>
+                <button type="button" class="chip" role="radio" data-when="asap" aria-checked="false" data-i18n="b.w3">Lo antes posible</button>
+              </div>
+            </fieldset>
+            <div class="b-step">
+              <label class="b-q" for="b-idea"><span class="n">4</span><span data-i18n="b.q4">Cuéntame tu idea</span></label>
+              <textarea id="b-idea" maxlength="600" data-i18n-ph="b.ph" placeholder="Por ejemplo: una página para mi pastelería con menú, fotos y botón de WhatsApp."></textarea>
+            </div>
+          </form>
+          <aside class="b-out" aria-live="polite">
+            <div class="b-out-top"><h3 data-i18n="b.out">Tu mensaje para Fiverr</h3><div class="msg-lang" role="group" aria-label="Idioma del mensaje"><button type="button" data-ml="es" aria-pressed="true">ES</button><button type="button" data-ml="en" aria-pressed="false">EN</button></div></div>
+            <div class="msg" id="b-msg"></div>
+            <div class="b-actions">
+              <button class="btn btn-accent" type="button" id="b-go"><svg class="ico"><use href="#i-copy"/></svg><span data-i18n="b.go">Copiar y abrir Fiverr</span></button>
+              <button class="btn btn-ghost" type="button" id="b-copy"><span data-i18n="b.copy">Solo copiar el mensaje</span></button>
+            </div>
+            <small data-i18n="b.note">En mi perfil de Fiverr toca «Contactar» y pega el mensaje. Te respondo con una propuesta, sin compromiso.</small>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Proceso ===================== -->
   <section class="block tight" id="proceso" aria-labelledby="proc-title">
     <div class="wrap block-grid">
       <div class="block-head" data-reveal>
@@ -651,13 +501,13 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
           <div class="step" data-reveal><span class="n">1</span><h3 data-i18n="w.1">Me cuentas tu idea</h3><p data-i18n="w.1t">Me escribes por Fiverr qué necesitas y para cuándo. Te hago las preguntas justas.</p></div>
           <div class="step" data-reveal style="--d:1"><span class="n">2</span><h3 data-i18n="w.2">Recibes una propuesta</h3><p data-i18n="w.2t">Te digo qué voy a hacer, en cuánto tiempo y a qué precio, antes de empezar.</p></div>
           <div class="step" data-reveal style="--d:2"><span class="n">3</span><h3 data-i18n="w.3">Ves los avances</h3><p data-i18n="w.3t">Te muestro el trabajo mientras avanza, para corregir a tiempo lo que haga falta.</p></div>
-          <div class="step" data-reveal style="--d:3"><span class="n">4</span><h3 data-i18n="w.4">Entrego y ajusto</h3><p data-i18n="w.4t">Recibes el proyecto terminado y hacemos los ajustes acordados.</p></div>
+          <div class="step" data-reveal style="--d:3"><span class="n">4</span><h3 data-i18n="w.4">Entrego y ajusto</h3><p data-i18n="w.4t">Recibes el proyecto terminado y lo ajustamos hasta que quedes conforme.</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TRAYECTORIA -->
+  <!-- ===================== Trayectoria ===================== -->
   <section class="block tight" id="trayectoria" aria-labelledby="tray-title">
     <div class="wrap block-grid">
       <div class="block-head" data-reveal>
@@ -669,62 +519,15 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
         <ol class="timeline" id="timeline">
           <li data-reveal><time data-i18n="t.1d">Enero 2023</time><div><h3 data-i18n="t.1">Primer script en Luau</h3><p data-i18n="t.1t">Empecé a programar por mi cuenta, creando scripts para juegos de Roblox.</p></div></li>
           <li data-reveal><time>2023 – 2026</time><div><h3 data-i18n="t.2">Nuevos lenguajes y plataformas</h3><p data-i18n="t.2t">Pasé a JavaScript con mods de Minecraft y scripts de navegador, y luego a aplicaciones de PC y páginas web.</p></div></li>
-          <li data-reveal><time>2026</time><div><h3 data-i18n="t.3">Fundación de Zypuc</h3><p data-i18n="t.3t">Lancé la tienda online de Zypuc en GitHub Pages, con pedidos por WhatsApp.</p></div></li>
+          <li data-reveal><time>2026</time><div><h3 data-i18n="t.3">Fundación de Zypuc</h3><p data-i18n="t.3t">Lancé la tienda online de Zypuc en GitHub Pages, con pedidos por WhatsApp y precios que se actualizan solos.</p></div></li>
           <li data-reveal><time data-i18n="t.4d">Octubre 2026</time><div><h3 data-i18n="t.4">Marca y Feria de Emprendimiento</h3><p data-i18n="t.4t">Terminamos el manual de marca y presentamos Zypuc en un stand el 21 de octubre.</p></div></li>
-          <li class="now" data-reveal><time data-i18n="t.5d">Hoy</time><div><h3 data-i18n="t.5">Freelancer en Fiverr</h3><p data-i18n="t.5t">Trabajo con clientes en páginas web, aplicaciones y scripts.</p></div></li>
+          <li class="now" data-reveal><time data-i18n="t.5d">Hoy</time><div><h3 data-i18n="t.5">Freelancer en Fiverr</h3><p data-i18n="t.5t">Trabajo con clientes en páginas web, marcas y scripts.</p></div></li>
         </ol>
       </div>
     </div>
   </section>
 
-  <!-- SERVICIOS -->
-  <section class="block tight" id="servicios" aria-labelledby="serv-title">
-    <div class="wrap block-grid">
-      <div class="block-head" data-reveal>
-        <h2 data-i18n="s.h">Servicios</h2>
-        <p data-i18n="s.hs">Disponibles a través de Fiverr.</p>
-      </div>
-      <div>
-        <h3 class="title" id="serv-title" data-reveal data-i18n="s.t">En qué puedo ayudarte.</h3>
-        <div class="services">
-          <article class="service spot" data-reveal>
-            <span class="s-ico"><svg class="ico"><use href="#i-globe"/></svg></span>
-            <h3 data-i18n="s.1">Páginas web</h3>
-            <p data-i18n="s.1t">Para que tu negocio o proyecto tenga presencia en internet y te contacten fácil.</p>
-            <ul><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.1a">Adaptada al celular</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.1b">Botón directo a WhatsApp</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.1c">Publicada con su enlace</span></li></ul>
-            <div class="get" data-i18n="s.1g">Recibes: <b>tu web en línea, lista para compartir</b></div>
-          </article>
-          <article class="service spot" data-reveal style="--d:1">
-            <span class="s-ico"><svg class="ico"><use href="#i-cube"/></svg></span>
-            <h3 data-i18n="s.2">Scripts para Roblox</h3>
-            <p data-i18n="s.2t">Para que tu juego tenga las mecánicas que imaginaste, funcionando bien.</p>
-            <ul><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.2a">Interfaces y menús animados</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.2b">Combate y movimiento</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.2c">Código ordenado y comentado</span></li></ul>
-            <div class="get" data-i18n="s.2g">Recibes: <b>el script listo para Roblox Studio</b></div>
-          </article>
-          <article class="service spot" data-reveal style="--d:2">
-            <span class="s-ico"><svg class="ico"><use href="#i-bolt"/></svg></span>
-            <h3 data-i18n="s.3">Automatización con JavaScript</h3>
-            <p data-i18n="s.3t">Para dejar de repetir a mano las mismas tareas en una página web.</p>
-            <ul><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.3a">Scripts de navegador</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.3b">Hechos para tu caso</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.3c">Guía de instalación</span></li></ul>
-            <div class="get" data-i18n="s.3g">Recibes: <b>el script y cómo usarlo</b></div>
-          </article>
-          <article class="service spot" data-reveal style="--d:3">
-            <span class="s-ico"><svg class="ico"><use href="#i-film"/></svg></span>
-            <h3 data-i18n="s.4">Edición de video</h3>
-            <p data-i18n="s.4t">Para presentar tu marca o proyecto con un video corto y cuidado.</p>
-            <ul><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.4a">Cortes y transiciones</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.4b">Textos y música</span></li><li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="s.4c">Formato para redes</span></li></ul>
-            <div class="get" data-i18n="s.4g">Recibes: <b>el video final en MP4</b></div>
-          </article>
-        </div>
-        <div class="services-cta" data-reveal>
-          <span data-i18n="s.p">Precios y paquetes, siempre actualizados en mi perfil.</span>
-          <a class="btn btn-primary js-fiverr magnetic" href="#" target="_blank" rel="noopener"><span data-i18n="s.pc">Ver precios en Fiverr</span><svg class="ico arrow"><use href="#i-arrow"/></svg></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PREGUNTAS -->
+  <!-- ===================== Preguntas ===================== -->
   <section class="block tight" id="preguntas" aria-labelledby="faq-title">
     <div class="wrap block-grid">
       <div class="block-head" data-reveal>
@@ -734,18 +537,19 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
       <div>
         <h3 class="title" id="faq-title" data-reveal data-i18n="f.t">Antes de empezar.</h3>
         <div class="faq" data-reveal>
-          <details><summary><span data-i18n="f.1">¿Cuánto cuesta un proyecto?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.1t">Depende de lo que necesites. Mis paquetes y precios están en Fiverr; si tu proyecto es diferente, te preparo una oferta a medida antes de empezar, sin compromiso.</p></details>
+          <details><summary><span data-i18n="f.1">¿Cuánto cuesta un proyecto?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.1t">No tengo precios fijos, porque cada proyecto es distinto. Usa «Arma tu proyecto» o escríbeme por Fiverr, y te envío una propuesta con precio y plazo antes de empezar, sin compromiso.</p></details>
           <details><summary><span data-i18n="f.2">¿Cómo se hace el pago?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.2t">Todo se paga a través de Fiverr. La plataforma guarda tu pago y me lo entrega cuando el trabajo está terminado, así tu dinero está protegido.</p></details>
-          <details><summary><span data-i18n="f.3">¿Cuánto tiempo toma?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.3t">Te digo el plazo exacto en la propuesta, según el tamaño del proyecto, para que sepas desde el inicio cuándo lo vas a recibir.</p></details>
-          <details><summary><span data-i18n="f.4">¿Puedo pedir cambios?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.4t">Sí. Te muestro avances durante el trabajo y, al entregar, hacemos los ajustes acordados en la propuesta.</p></details>
-          <details><summary><span data-i18n="f.5">¿En qué idiomas trabajas?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.5t">En español y en inglés. Puedo hacer tu web o tu interfaz en cualquiera de los dos idiomas, o en ambos.</p></details>
-          <details><summary><span data-i18n="f.6">¿Qué necesito para empezar?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.6t">Solo tu idea. Si tienes textos, fotos, logo o un ejemplo de algo que te guste, mejor; si no, te ayudo a definirlo.</p></details>
+          <details><summary><span data-i18n="f.3">¿Cuánto tiempo toma?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.3t">Te doy un plazo real en la propuesta, según el tamaño del proyecto, para que sepas desde el inicio cuándo lo vas a recibir.</p></details>
+          <details><summary><span data-i18n="f.4">¿Puedo pedir cambios?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.4t">Sí. Te muestro avances durante el trabajo y hacemos revisiones hasta que quedes conforme con el resultado.</p></details>
+          <details><summary><span data-i18n="f.5">¿También haces logos y mascotas?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.5t">Sí. Diseño logo, colores, tipografías, mascota e ícono de app, como el kit de marca de Zypuc que ves arriba.</p></details>
+          <details><summary><span data-i18n="f.6">¿En qué idiomas trabajas?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.6t">En español y en inglés. Puedo hacer tu web o tu interfaz en cualquiera de los dos idiomas, o en ambos.</p></details>
+          <details><summary><span data-i18n="f.7">¿Qué necesito para empezar?</span><span class="pm" aria-hidden="true"></span></summary><p class="ans" data-i18n="f.7t">Solo tu idea. Si tienes textos, fotos, logo o un ejemplo de algo que te guste, mejor; si no, te ayudo a definirlo.</p></details>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACTO -->
+  <!-- ===================== Contacto ===================== -->
   <section class="contact" id="contacto" aria-labelledby="contact-title">
     <div class="wrap">
       <div class="contact-box" data-reveal>
@@ -755,8 +559,8 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
           <p data-i18n="c.p">Cuéntame qué necesitas y te respondo con una propuesta clara de alcance, plazo y precio.</p>
         </div>
         <div class="contact-actions">
-          <a class="btn btn-accent js-fiverr magnetic" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-case"/></svg><span data-i18n="c.b1">Escribirme en Fiverr</span></a>
-          <a class="btn btn-ghost js-github magnetic" href="#" target="_blank" rel="noopener"><svg class="ico"><use href="#i-github"/></svg><span data-i18n="c.b2">Ver mi GitHub</span></a>
+          <a class="btn btn-accent js-fiverr magnetic" href="https://es.pro.fiverr.com/s/EmmQYNe" target="_blank" rel="noopener"><svg class="ico"><use href="#i-case"/></svg><span data-i18n="c.b1">Escribirme en Fiverr</span></a>
+          <a class="btn btn-ghost js-github magnetic" href="https://github.com/djpacker17" target="_blank" rel="noopener"><svg class="ico"><use href="#i-github"/></svg><span data-i18n="c.b2">Ver mi GitHub</span></a>
           <small data-i18n="c.s">Sin compromiso. El pago se hace por Fiverr.</small>
         </div>
       </div>
@@ -767,324 +571,24 @@ html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{backgrou
 <footer>
   <div class="wrap">
     <span>© <span id="year">2026</span> Leo. <span data-i18n="ft">Diseñado y programado a mano.</span></span>
-    <span><a class="js-fiverr" href="#" target="_blank" rel="noopener">Fiverr</a> &nbsp;&nbsp; <a class="js-github" href="#" target="_blank" rel="noopener">GitHub</a></span>
+    <span class="f-links">
+      <button type="button" id="replay"><svg class="ico"><use href="#i-play"/></svg><span data-i18n="ft.replay">Ver la intro otra vez</span></button>
+      <a class="js-fiverr" href="https://es.pro.fiverr.com/s/EmmQYNe" target="_blank" rel="noopener">Fiverr</a>
+      <a class="js-github" href="https://github.com/djpacker17" target="_blank" rel="noopener">GitHub</a>
+    </span>
   </div>
 </footer>
 </div>
 
+<div class="m-cta" id="m-cta">
+  <img src="media/avatar-320.jpg" alt="" width="34" height="34">
+  <span><b>Leo</b><span data-i18n="m.t">Webs, marcas y scripts</span></span>
+  <a class="btn btn-accent js-fiverr" href="https://es.pro.fiverr.com/s/EmmQYNe" target="_blank" rel="noopener" data-i18n="m.b">Contratar</a>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>
-/* ===== Configuración: cambia tus enlaces aquí ===== */
-const CONFIG = {
-  fiverr: "https://es.pro.fiverr.com/s/EmmQYNe",
-  github: "https://github.com/djpacker17",
-  goatcounter: ""   // Opcional: tu código de GoatCounter (por ejemplo "leo-dev") para contar visitas
-};
-
-const $ = (s, r = document) => r.querySelector(s);
-const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const finePointer = matchMedia("(pointer: fine)").matches;
-
-$$(".js-fiverr").forEach(a => a.href = CONFIG.fiverr);
-$$(".js-github").forEach(a => a.href = CONFIG.github);
-$("#year").textContent = new Date().getFullYear();
-
-/* Título palabra por palabra */
-function splitTitle(){
-  const h = $("[data-split]"); let i = 0;
-  [...h.childNodes].forEach(n => {
-    if (n.nodeType === 3){
-      const frag = document.createDocumentFragment();
-      n.textContent.split(/(\s+)/).forEach(part => {
-        if (!part) return;
-        if (/^\s+$/.test(part)){ frag.appendChild(document.createTextNode(part)); return; }
-        const s = document.createElement("span"); s.className = "w"; s.style.setProperty("--i", i++); s.textContent = part; frag.appendChild(s);
-      });
-      n.replaceWith(frag);
-    } else if (n.classList && n.classList.contains("grad")){
-      n.classList.add("w"); n.style.setProperty("--i", i++); n.style.whiteSpace = "normal"; n.style.display = "inline";
-    }
-  });
-}
-
-/* ===== Idiomas: español (en el HTML) e inglés ===== */
-const EN = {
-  "nav.projects":"Work","nav.process":"Process","nav.services":"Services","nav.faq":"FAQ","nav.hire":"Hire me",
-  "hero.status":"Available for new projects",
-  "hero.title":'Custom websites and scripts, <span class="grad">ready to use.</span>',
-  "hero.lead":"I'm Leo, a web and software developer. I help businesses, entrepreneurs and Roblox creators get their website or system up and running. I've been coding since 2023 and I founded Zypuc, an online store in Pucallpa, Peru.",
-  "hero.cta":"Hire me on Fiverr","hero.cta2":"See my work",
-  "hero.r1":"Payment protected by Fiverr","hero.r2":"We talk about your idea first",
-  "hero.alt":"Illustrated portrait of Leo","hero.role":"Web and software developer",
-  "facts.years":"years","facts.years2":"of self-taught programming",
-  "facts.spec":"specialties","facts.spec2":"web, desktop apps, JavaScript and Roblox",
-  "facts.prod":"products","facts.prod2":"published with real photos on Zypuc",
-  "mq.wa":"WhatsApp integration","mq.pwa":"Installable web apps",
-  "p.h":"Featured project","p.hs":"Design, development and launch.",
-  "p.t":"Zypuc, an online store built from start to finish.",
-  "p.i":"I founded Zypuc with my team to bring products from all over Peru to Pucallpa. I handled the web store, the brand and its public launch.",
-  "p.altL":"Real homepage of the Zypuc store in light mode","p.altD":"Real homepage of the Zypuc store in dark mode",
-  "p.c1":"The challenge","p.c1t":"In Pucallpa, products from the country's big retailers aren't always available, and buying online from another city feels risky.",
-  "p.c2":"The solution",
-  "p.s1":"A catalog of 112 products with real photos, organized into tech, sports, baking and gifts.",
-  "p.s2":"Price comparison: every product shows what it costs at other stores, such as Coolbox or Oechsle.",
-  "p.s3":"Shopping cart, product comparison and direct orders through WhatsApp.",
-  "p.s4":"Light and dark mode, installable as an app, and a “Stand mode” to show products at the fair.",
-  "p.c3":"The result","p.c3t":"The store is live and in use, with visible savings compared to other stores. We presented it to the public at an Entrepreneurship Fair stand.",
-  "p.k1":"Role","p.v1":"Founder and developer","p.k2":"Year","p.k3":"Tech","p.k4":"Catalog","p.v4":"112 products","p.k5":"Orders",
-  "p.visit":"Visit the store","p.sound":"Turn sound on","p.soundOff":"Mute",
-  "p.vh":"Brand identity and video","p.vt":"We created the logo, the Zypi mascot, the colors and a launch film. This is its animated intro.",
-  "p.movie":"Watch the full film",
-  "o.h":"Other work","o.hs":"Programming, automation and content.","o.t":"What I've built on other platforms.",
-  "o.1":"Roblox scripts","o.1t":"Animated interfaces, combat systems and movement systems for games. It's what I've been doing the longest.",
-  "o.2":"Minecraft mods","o.2t":"Modifications and interfaces with customizable themes and colors.",
-  "o.3":"Browser scripts","o.3t":"Programs with their own interface that automate tasks inside web pages.","o.3k":"Automation",
-  "o.4":"Desktop applications","o.4t":"Computer programs built from scratch.","o.4k":"Desktop apps",
-  "o.5":"Video and brand identity","o.5t":"Video editing and a complete brand kit for Zypuc, with the help of AI tools.",
-  "w.h":"How I work","w.hs":"Simple, no surprises.","w.t":"From your idea to a finished project, in four steps.",
-  "w.1":"You tell me your idea","w.1t":"Message me on Fiverr with what you need and when. I'll ask the right questions.",
-  "w.2":"You get a proposal","w.2t":"I tell you what I'll build, how long it takes and what it costs, before I start.",
-  "w.3":"You see the progress","w.3t":"I show you the work as it moves forward, so we can adjust things in time.",
-  "w.4":"I deliver and adjust","w.4t":"You receive the finished project and we make the agreed adjustments.",
-  "t.h":"Journey","t.hs":"How I got here.","t.t":"From my first script to my own online store.",
-  "t.1d":"January 2023","t.1":"First Luau script","t.1t":"I started coding on my own, writing scripts for Roblox games.",
-  "t.2":"New languages and platforms","t.2t":"I moved to JavaScript with Minecraft mods and browser scripts, then to desktop apps and websites.",
-  "t.3":"Founding Zypuc","t.3t":"I launched the Zypuc online store on GitHub Pages, with orders through WhatsApp.",
-  "t.4d":"October 2026","t.4":"Brand and Entrepreneurship Fair","t.4t":"We finished the brand manual and presented Zypuc at a stand on October 21.",
-  "t.5d":"Today","t.5":"Freelancer on Fiverr","t.5t":"I work with clients on websites, applications and scripts.",
-  "s.h":"Services","s.hs":"Available through Fiverr.","s.t":"How I can help you.",
-  "s.1":"Websites","s.1t":"So your business or project has an online presence and people can reach you easily.",
-  "s.1a":"Mobile friendly","s.1b":"Direct WhatsApp button","s.1c":"Published with its own link","s.1g":"You get: <b>your website live, ready to share</b>",
-  "s.2":"Roblox scripts","s.2t":"So your game has the mechanics you imagined, working properly.",
-  "s.2a":"Animated interfaces and menus","s.2b":"Combat and movement","s.2c":"Clean, commented code","s.2g":"You get: <b>the script ready for Roblox Studio</b>",
-  "s.3":"JavaScript automation","s.3t":"Stop repeating the same tasks by hand on a website.",
-  "s.3a":"Browser scripts","s.3b":"Built for your case","s.3c":"Installation guide","s.3g":"You get: <b>the script and how to use it</b>",
-  "s.4":"Video editing","s.4t":"Present your brand or project with a short, polished video.",
-  "s.4a":"Cuts and transitions","s.4b":"Text and music","s.4c":"Social media formats","s.4g":"You get: <b>the final video in MP4</b>",
-  "s.p":"Prices and packages, always up to date on my profile.","s.pc":"See prices on Fiverr",
-  "f.h":"FAQ","f.hs":"What people usually ask me.","f.t":"Before we start.",
-  "f.1":"How much does a project cost?","f.1t":"It depends on what you need. My packages and prices are on Fiverr; if your project is different, I'll prepare a custom offer before we start, with no commitment.",
-  "f.2":"How does payment work?","f.2t":"Everything is paid through Fiverr. The platform holds your payment and releases it to me when the work is done, so your money is protected.",
-  "f.3":"How long does it take?","f.3t":"I give you the exact timeline in the proposal, based on the size of the project, so you know from the start when you'll get it.",
-  "f.4":"Can I ask for changes?","f.4t":"Yes. I show you progress during the work and, on delivery, we make the adjustments agreed in the proposal.",
-  "f.5":"What languages do you work in?","f.5t":"Spanish and English. I can build your website or interface in either language, or both.",
-  "f.6":"What do I need to get started?","f.6t":"Just your idea. If you have text, photos, a logo or an example of something you like, even better; if not, I'll help you define it.",
-  "c.t":"Have a project in mind?","c.p":"Tell me what you need and I'll reply with a clear proposal covering scope, timeline and price.",
-  "c.b1":"Message me on Fiverr","c.b2":"See my GitHub","c.s":"No commitment. Payment goes through Fiverr.",
-  "ft":"Designed and coded by hand."
-};
-const META = {
-  es:{title:"Leo | Desarrollador web y de software", lang:"Cambiar idioma", sound:"Activar sonido", soundOff:"Silenciar"},
-  en:{title:"Leo | Web and software developer", lang:"Change language", sound:"Turn sound on", soundOff:"Mute"}
-};
-const ES = {};
-document.querySelectorAll("[data-i18n]").forEach(el => ES[el.dataset.i18n] = el.innerHTML);
-document.querySelectorAll("[data-i18n-alt]").forEach(el => ES[el.dataset.i18nAlt] = el.alt);
-let LANG = "es";
-function setLang(l, first){
-  LANG = l;
-  const dict = l === "en" ? EN : ES;
-  document.documentElement.lang = l;
-  document.querySelectorAll("[data-i18n]").forEach(el => { const v = dict[el.dataset.i18n]; if (v != null) el.innerHTML = v; });
-  document.querySelectorAll("[data-i18n-alt]").forEach(el => { const v = dict[el.dataset.i18nAlt]; if (v != null) el.alt = v; });
-  document.title = META[l].title;
-  document.getElementById("lang").setAttribute("aria-label", META[l].lang);
-  const h = document.querySelector("[data-split]");
-  if (!first) h.classList.add("done");
-  splitTitle();
-  if (window.__syncSound) window.__syncSound();
-  try { localStorage.setItem("leo-lang", l); } catch(e){}
-}
-
-setLang(document.documentElement.lang === "en" ? "en" : "es", true);
-$("#lang").addEventListener("click", () => setLang(LANG === "es" ? "en" : "es"));
-
-/* Video de la intro: se reproduce cuando se ve */
-const intro = $("#intro"), soundBtn = $("#sound");
-window.__syncSound = () => {
-  const on = !intro.muted;
-  soundBtn.setAttribute("aria-pressed", on);
-  soundBtn.innerHTML = `<svg class="ico"><use href="#i-${on ? "sound" : "mute"}"/></svg><span>${on ? META[LANG].soundOff : META[LANG].sound}</span>`;
-};
-soundBtn.addEventListener("click", e => { e.preventDefault(); intro.muted = !intro.muted; if (intro.paused) intro.play().catch(()=>{}); window.__syncSound(); });
-window.__syncSound();
-if ("IntersectionObserver" in window){
-  new IntersectionObserver(es => es.forEach(en => {
-    if (en.isIntersecting && !reduce) intro.play().catch(()=>{}); else intro.pause();
-  }), {threshold:.4}).observe(intro);
-}
-if (reduce) intro.setAttribute("controls", "");
-
-/* Contador de visitas opcional (GoatCounter, sin cookies) */
-if (CONFIG.goatcounter){
-  const g = document.createElement("script"); g.async = true;
-  g.dataset.goatcounter = `https://${CONFIG.goatcounter}.goatcounter.com/count`;
-  g.src = "https://gc.zgo.at/count.js"; document.body.appendChild(g);
-}
-
-/* Barra superior y progreso */
-const nav = $("#nav"), prog = $("#progress");
-const onScroll = () => {
-  nav.classList.toggle("scrolled", scrollY > 8);
-  const max = document.documentElement.scrollHeight - innerHeight;
-  prog.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
-  timelineFill();
-};
-addEventListener("scroll", onScroll, {passive:true});
-
-/* Revelado al hacer scroll + contadores */
-const countUp = el => {
-  const end = +el.dataset.count, t0 = performance.now(), dur = 1200;
-  const tick = t => { const p = Math.min(1, (t - t0) / dur); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); };
-  reduce ? el.textContent = end : requestAnimationFrame(tick);
-};
-if ("IntersectionObserver" in window){
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (!e.isIntersecting) return;
-    e.target.classList.add("in");
-    $$("[data-count]", e.target).forEach(countUp);
-    io.unobserve(e.target);
-  }), {threshold:.15, rootMargin:"0px 0px -8% 0px"});
-  $$("[data-reveal]").forEach(el => io.observe(el));
-  const so = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); so.disconnect(); } }), {threshold:.4});
-  so.observe($("#steps"));
-  /* menú activo */
-  const links = $$(".nav ul a");
-  const mo = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) links.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + e.target.id));
-  }), {rootMargin:"-45% 0px -50% 0px"});
-  links.forEach(l => { const s = $(l.getAttribute("href")); if (s) mo.observe(s); });
-} else {
-  $$("[data-reveal]").forEach(el => el.classList.add("in"));
-  $$("[data-count]").forEach(el => el.textContent = el.dataset.count);
-}
-
-/* Línea de tiempo que se llena al bajar */
-const tl = $("#timeline"), tlItems = $$("li", tl);
-function timelineFill(){
-  const r = tl.getBoundingClientRect(), mid = innerHeight * .6;
-  const p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
-  tl.style.setProperty("--p", p);
-  tlItems.forEach(li => li.classList.toggle("lit", li.getBoundingClientRect().top < mid));
-}
-onScroll();
-
-/* Cinta de herramientas infinita */
-const mq = $("#marquee"); mq.innerHTML += mq.innerHTML;
-$$("span", mq).slice(mq.children.length / 2).forEach(s => s.setAttribute("aria-hidden", "true"));
-
-/* Tarjeta de perfil: se inclina con el mouse */
-const prof = $("#profile");
-if (finePointer && !reduce){
-  const hero = $(".hero");
-  hero.addEventListener("mousemove", e => {
-    const r = prof.getBoundingClientRect();
-    const x = (e.clientX - (r.left + r.width / 2)) / innerWidth, y = (e.clientY - (r.top + r.height / 2)) / innerHeight;
-    prof.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 14}deg)`;
-    prof.style.setProperty("--sx", ((e.clientX - r.left) / r.width * 100) + "%");
-    prof.style.setProperty("--sy", ((e.clientY - r.top) / r.height * 100) + "%");
-  });
-  hero.addEventListener("mouseleave", () => prof.style.transform = "");
-}
-
-/* Botones magnéticos */
-if (finePointer && !reduce){
-  $$(".magnetic").forEach(b => {
-    b.addEventListener("mousemove", e => {
-      const r = b.getBoundingClientRect();
-      b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px, ${(e.clientY - r.top - r.height / 2) * .28}px)`;
-    });
-    b.addEventListener("mouseleave", () => b.style.transform = "");
-  });
-}
-
-/* Brillo que sigue al mouse dentro de las tarjetas */
-$$(".spot").forEach(c => c.addEventListener("mousemove", e => {
-  const r = c.getBoundingClientRect();
-  c.style.setProperty("--mx", (e.clientX - r.left) + "px");
-  c.style.setProperty("--my", (e.clientY - r.top) + "px");
-}));
-
-/* ===== Fondo: cuadrados que se encienden alrededor del mouse ===== */
-function squareField(canvas, opts){
-  const ctx = canvas.getContext("2d");
-  const S = opts.size, R = opts.radius;
-  let W = 0, H = 0, cols = 0, rows = 0, cells = new Float32Array(0), dpr = 1;
-  let mouse = {x:-9999, y:-9999, active:false}, color = "36,83,214", color2 = "20,184,166", running = true;
-  const readColors = () => {
-    const cs = getComputedStyle(document.documentElement);
-    const toRgb = v => { const h = v.trim().replace("#",""); return [0,2,4].map(i => parseInt(h.substr(i,2),16)).join(","); };
-    color = opts.color || toRgb(cs.getPropertyValue("--accent"));
-    color2 = opts.color2 || toRgb(cs.getPropertyValue("--accent-2"));
-  };
-  const resize = () => {
-    dpr = Math.min(devicePixelRatio || 1, 2);
-    const r = canvas.getBoundingClientRect(); W = r.width; H = r.height;
-    canvas.width = W * dpr; canvas.height = H * dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
-    cols = Math.ceil(W / S) + 1; rows = Math.ceil(H / S) + 1; cells = new Float32Array(cols * rows);
-  };
-  const hue = new Float32Array(4096).map(() => Math.random());
-  const frame = () => {
-    if (!running) return;
-    ctx.clearRect(0, 0, W, H);
-    if (mouse.active){
-      const cx = Math.floor(mouse.x / S), cy = Math.floor(mouse.y / S), n = Math.ceil(R / S);
-      for (let y = cy - n; y <= cy + n; y++) for (let x = cx - n; x <= cx + n; x++){
-        if (x < 0 || y < 0 || x >= cols || y >= rows) continue;
-        const dx = x * S + S / 2 - mouse.x, dy = y * S + S / 2 - mouse.y, d = Math.sqrt(dx*dx + dy*dy);
-        if (d < R){ const v = 1 - d / R, i = y * cols + x; if (cells[i] < v) cells[i] = v; }
-      }
-    }
-    if (Math.random() < opts.twinkle){ const i = (Math.random() * cells.length) | 0; cells[i] = Math.max(cells[i], .55 + Math.random() * .35); }
-    for (let i = 0; i < cells.length; i++){
-      const v = cells[i]; if (v < .01){ cells[i] = 0; continue; }
-      const x = (i % cols) * S, y = ((i / cols) | 0) * S;
-      const c = hue[i % 4096] > .7 ? color2 : color;
-      ctx.fillStyle = `rgba(${c},${v * opts.alpha})`;
-      ctx.fillRect(x + 1, y + 1, S - 1, S - 1);
-      ctx.strokeStyle = `rgba(${c},${v * opts.alpha * 1.6})`;
-      ctx.strokeRect(x + 1.5, y + 1.5, S - 2, S - 2);
-      cells[i] = v * opts.decay;
-    }
-    requestAnimationFrame(frame);
-  };
-  readColors(); resize();
-  addEventListener("resize", resize);
-  return {
-    move(x, y){ mouse.x = x; mouse.y = y; mouse.active = true; },
-    leave(){ mouse.active = false; },
-    recolor: readColors,
-    start(){ running = true; requestAnimationFrame(frame); },
-    stop(){ running = false; }
-  };
-}
-if (!reduce){
-  const bg = squareField($("#squares"), {size:40, radius:150, decay:.955, alpha:.2, twinkle:.12});
-  bg.start();
-  addEventListener("pointermove", e => bg.move(e.clientX, e.clientY), {passive:true});
-  document.addEventListener("pointerleave", () => bg.leave());
-  addEventListener("touchend", () => bg.leave(), {passive:true});
-  document.addEventListener("visibilitychange", () => document.hidden ? bg.stop() : bg.start());
-
-  const box = $(".contact-box");
-  const cf = squareField($("#contact-canvas"), {size:34, radius:130, decay:.95, alpha:.28, twinkle:.18, color:"70,117,255", color2:"45,212,191"});
-  let cfOn = false;
-  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && !cfOn){ cfOn = true; cf.start(); } else if (!e.isIntersecting && cfOn){ cfOn = false; cf.stop(); } })).observe(box);
-  box.addEventListener("pointermove", e => { const r = box.getBoundingClientRect(); cf.move(e.clientX - r.left, e.clientY - r.top); });
-  box.addEventListener("pointerleave", () => cf.leave());
-
-  /* Modo claro / oscuro */
-  window.__recolor = () => bg.recolor();
-}
-
-const root = document.documentElement;
-$("#theme").addEventListener("click", () => {
-  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-  root.dataset.theme = dark ? "light" : "dark";
-  try { localStorage.setItem("leo-theme", root.dataset.theme); } catch(e){}
-  if (window.__recolor) window.__recolor();
-});
-</script>
+<script src="js/en.js?v=4" defer></script>
+<script src="js/app.js?v=4" defer></script>
+<script src="js/intro.js?v=4" defer></script>
 </body>
 </html>
