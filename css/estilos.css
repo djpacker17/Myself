@@ -58,7 +58,7 @@ button{background:none;border:0;cursor:pointer}
   background-size:40px 40px;background-position:-1px -1px;
   -webkit-mask-image:radial-gradient(ellipse 90% 75% at 50% 20%,#000 30%,transparent 85%);mask-image:radial-gradient(ellipse 90% 75% at 50% 20%,#000 30%,transparent 85%)}
 #squares{position:fixed;inset:0;z-index:0;pointer-events:none;width:100%;height:100%;
-  -webkit-mask-image:radial-gradient(ellipse 90% 75% at 50% 20%,#000 30%,transparent 85%);mask-image:radial-gradient(ellipse 90% 75% at 50% 20%,#000 30%,transparent 85%)}
+  -webkit-mask-image:radial-gradient(ellipse 120% 110% at 50% 30%,#000 45%,transparent 100%);mask-image:radial-gradient(ellipse 120% 110% at 50% 30%,#000 45%,transparent 100%)}
 .glow{position:fixed;z-index:0;pointer-events:none;width:620px;height:620px;border-radius:50%;filter:blur(70px);opacity:.5;animation:drift 22s ease-in-out infinite alternate}
 .glow.g1{top:-220px;right:-160px;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 35%,transparent),transparent 65%)}
 .glow.g2{top:30%;left:-260px;background:radial-gradient(circle,color-mix(in srgb,var(--accent-2) 28%,transparent),transparent 65%);animation-duration:28s;animation-direction:alternate-reverse}
@@ -464,6 +464,8 @@ footer button .ico{width:15px;height:15px}
 .js .profile{opacity:0;animation:card 1.1s var(--ease) .35s forwards}
 .js .hero h1 .w{opacity:0;transform:translateY(.45em);filter:blur(6px);animation:word .8s var(--ease) forwards;animation-delay:calc(var(--i) * 55ms + 120ms)}
 .js .hero h1 .grad{animation:word .8s var(--ease) forwards,flow 6s linear infinite;animation-delay:calc(var(--i) * 55ms + 120ms),0s}
+.js .hero h1:not(.ready){opacity:0;animation:showLate 0s 2.5s forwards}
+@keyframes showLate{to{opacity:1}}
 .hero h1.done .w{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
 .hero h1.done .grad{animation:flow 6s linear infinite!important}
 .intro-on:not(.intro-reveal) .hero *,.intro-on:not(.intro-reveal) .profile{animation-play-state:paused!important}
@@ -574,4 +576,127 @@ html.intro-on:not(.intro-reveal){overflow:hidden}
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .js [data-reveal],.js .hero *,.js .profile{opacity:1!important;transform:none!important;filter:none!important}
   .intro-on .intro{display:none}
+}
+
+/* =========================================================
+   Animaciones de interacción y de scroll (js/interacciones.js)
+   ========================================================= */
+/* Onda al presionar */
+.rip-wrap{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none}
+.rip{position:absolute;border-radius:50%;background:currentColor;opacity:.22;transform:scale(0);animation:rip .65s cubic-bezier(.2,.8,.2,1) forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(1);opacity:0}}
+.btn:active,.chip:active,.tab:active,.theme:active,.lang:active,.shop-qty button:active,.bd-toggle:active{scale:.96}
+.btn,.chip,.tab,.theme,.lang{transition-property:background,border-color,color,box-shadow,transform,scale;transition-duration:.2s,.2s,.2s,.2s,.25s,.15s}
+
+/* Ráfaga de cuadrados */
+.fx-burst{position:fixed;width:0;height:0;z-index:140;pointer-events:none}
+.fx-burst i{position:absolute;left:0;top:0;border-radius:2px}
+
+/* Tema: el ícono gira y la pantalla cambia en círculo */
+.theme.spin .ico{animation:themeSpin .6s cubic-bezier(.3,1.4,.5,1)}
+@keyframes themeSpin{from{transform:rotate(-140deg) scale(.3);opacity:0}to{transform:none;opacity:1}}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-new(root){z-index:2}
+
+/* Idioma: la pastilla se desliza */
+.lang{position:relative}
+.lang::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:28px;border-radius:6px;background:var(--ink);transition:transform .4s cubic-bezier(.3,1.3,.5,1)}
+html[lang="en"] .lang::before{transform:translateX(28px)}
+.lang span{position:relative;z-index:1;width:28px;padding:4px 0;text-align:center;background:none!important;transition:color .25s}
+html[lang="es"] .lang [data-l="es"],html[lang="en"] .lang [data-l="en"]{color:var(--bg)}
+
+/* Encabezado que se esconde al bajar */
+header.nav{transition:border-color .2s,transform .4s var(--ease)}
+header.nav.hide{transform:translateY(-100%)}
+
+/* Cuadrícula del fondo con profundidad */
+.bg-grid{background-position:-1px calc(-1px - var(--gy,0px))}
+.fx-on .marquee-track{animation:none;will-change:transform}
+
+/* Títulos palabra por palabra */
+.js .title[data-reveal]{opacity:1;transform:none}
+.title .tw{display:inline-block}
+.js .title .tw{opacity:0;transform:translateY(.55em);filter:blur(5px);transition:opacity .7s var(--ease),transform .8s var(--ease),filter .7s var(--ease);transition-delay:calc(var(--i) * 45ms + 60ms)}
+.js .title.in .tw{opacity:1;transform:none;filter:none}
+.scr{color:var(--accent);opacity:.85}
+
+/* Línea de las etiquetas de sección */
+.js .block-head h2::before{width:0;transition:width .7s var(--ease) .2s}
+.js .block-head.in h2::before{width:18px}
+
+/* La captura de Zypuc se descubre de arriba hacia abajo */
+.js .case .browser{clip-path:inset(0 -60px 100% -60px);transition:clip-path 1.2s var(--ease) .2s,transform .7s var(--ease)}
+.js .case.in .browser{clip-path:inset(0 -60px -80px -60px)}
+
+/* Kit de marca en cascada */
+.js .kit[data-reveal]{opacity:1;transform:none}
+.js .kit figure{opacity:0;transform:translateY(18px) scale(.97);transition:opacity .7s var(--ease),transform .8s var(--ease)}
+.js .kit.in figure{opacity:1;transform:none}
+.kit figure:nth-child(2){transition-delay:.08s}.kit figure:nth-child(3){transition-delay:.16s}.kit figure:nth-child(4){transition-delay:.24s}
+.kit figure{cursor:pointer}
+
+/* Pestañas con indicador deslizante y código en cascada */
+.tabs{position:relative}
+.tab-ind{position:absolute;left:0;top:5px;bottom:5px;width:0;border-radius:10px;background:var(--ink);transition:transform .45s cubic-bezier(.3,1.2,.5,1),width .45s cubic-bezier(.3,1.2,.5,1);z-index:0}
+.tab{position:relative;z-index:1}
+.tabs.has-ind .tab[aria-selected="true"]{background:transparent}
+.code pre.cascade .ln{animation:lnIn .45s var(--ease) both;animation-delay:calc(min(var(--n), 34) * 16ms)}
+@keyframes lnIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+.demo:not([hidden]){animation:demoIn .5s var(--ease)}
+@keyframes demoIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+
+/* Tienda: botón presionado y WhatsApp «escribiendo» */
+.shop-add.pressed{animation:press .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes press{30%{transform:scale(.94)}100%{transform:none}}
+.wa-bubble.typing{width:max-content;padding:12px 14px}
+.dots{display:inline-flex;gap:4px;vertical-align:middle}
+.dots i{width:7px;height:7px;border-radius:50%;background:#0B2A12;opacity:.3;animation:dot 1s ease-in-out infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes dot{40%{opacity:.85;transform:translateY(-3px)}}
+
+/* Arma tu proyecto: chips que rebotan, línea nueva resaltada y «¡Copiado!» */
+.chip.pop{animation:chipPop .42s cubic-bezier(.3,1.6,.5,1)}
+@keyframes chipPop{35%{transform:scale(.9)}70%{transform:scale(1.06)}100%{transform:none}}
+.chip.ping{animation:chipPing 1s ease-out 2}
+@keyframes chipPing{from{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}to{box-shadow:0 0 0 14px transparent}}
+.msg .ml.new{border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone;animation:mlNew 1.6s var(--ease)}
+@keyframes mlNew{0%{background:rgba(111,149,255,.38);color:#fff}100%{background:transparent}}
+.btn > *{transition:opacity .25s,transform .35s var(--ease)}
+.btn .ok-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;opacity:0;transform:translateY(12px);pointer-events:none}
+.btn.copied > :not(.ok-label):not(.rip-wrap){opacity:0;transform:translateY(-12px)}
+.btn.copied .ok-label{opacity:1;transform:none}
+.ok-label .draw{stroke-dasharray:24;stroke-dashoffset:24}
+.btn.copied .ok-label .draw{animation:draw .45s .12s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.palette button.copied,.bd-swatches button.copied{animation:swatch .55s cubic-bezier(.3,1.6,.5,1)}
+@keyframes swatch{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 60%,transparent)}35%{transform:scale(.88)}70%{transform:scale(1.08)}100%{transform:none;box-shadow:0 0 0 12px transparent}}
+
+/* Preguntas */
+.js .faq .ans{animation:none;overflow:hidden}
+.faq details.closing summary .pm{background:transparent;color:inherit;border-color:var(--line)}
+.faq details.closing summary .pm::after{transform:translate(-50%,-50%) rotate(90deg)}
+
+/* Línea de tiempo y servicios */
+.timeline li.lit::before{animation:dotPop .55s cubic-bezier(.3,1.6,.5,1)}
+@keyframes dotPop{40%{transform:scale(1.5)}100%{transform:none}}
+.service .s-ico,.step .n,.promise .p-ico{transition:transform .45s cubic-bezier(.3,1.5,.5,1)}
+.service:hover .s-ico,.promise:hover .p-ico{transform:rotate(-8deg) scale(1.1)}
+.step:hover .n{transform:translateY(-3px) rotate(-6deg)}
+.profile .photo{cursor:pointer}
+
+/* Botón para volver arriba */
+.to-top{position:fixed;right:20px;bottom:20px;z-index:56;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);box-shadow:var(--shadow);opacity:0;transform:translateY(24px) scale(.8);pointer-events:none;transition:opacity .3s,transform .45s cubic-bezier(.3,1.4,.5,1),bottom .35s var(--ease)}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{color:var(--accent)}
+.tt-ring{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.tt-ring circle{fill:none;stroke-width:3}
+.tt-bg{stroke:var(--line)}
+.tt-fg{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .15s linear}
+.tt-arrow{width:20px;height:20px;transition:transform .3s var(--ease)}
+.to-top:hover .tt-arrow{transform:translateY(-2px)}
+.to-top.launch .tt-arrow{animation:launch .7s cubic-bezier(.5,0,.3,1)}
+@keyframes launch{45%{transform:translateY(-26px);opacity:0}46%{transform:translateY(22px);opacity:0}100%{transform:none;opacity:1}}
+@media (max-width:720px){
+  .to-top{right:14px;bottom:16px;width:46px;height:46px}
+  .to-top.lift{bottom:84px}
 }

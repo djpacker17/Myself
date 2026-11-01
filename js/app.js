@@ -40,7 +40,8 @@ const STR = {
     msgCopied: "Mensaje copiado. En Fiverr toca «Contactar» y pégalo.",
     msgCopiedOnly: "Mensaje copiado.",
     copyFail: "No se pudo copiar. Selecciona el texto y cópialo a mano.",
-    placeholder: "Elige al menos una opción en el paso 1 y aquí aparecerá tu mensaje, listo para pegar en Fiverr."
+    placeholder: "Elige al menos una opción en el paso 1 y aquí aparecerá tu mensaje, listo para pegar en Fiverr.",
+    copiedBtn: "¡Copiado!"
   },
   en: {
     title: "Leo | Web and app developer, brand designer",
@@ -56,7 +57,8 @@ const STR = {
     msgCopied: "Message copied. On Fiverr, tap “Contact” and paste it.",
     msgCopiedOnly: "Message copied.",
     copyFail: "Couldn't copy. Select the text and copy it by hand.",
-    placeholder: "Choose at least one option in step 1 and your message will appear here, ready to paste on Fiverr."
+    placeholder: "Choose at least one option in step 1 and your message will appear here, ready to paste on Fiverr.",
+    copiedBtn: "Copied!"
   }
 };
 let LANG = root.lang === "en" ? "en" : "es";
@@ -145,6 +147,7 @@ window.LeoHL = highlight;
 /* ---------- Título palabra por palabra ---------- */
 function splitTitle() {
   const h = $("[data-split]"); let i = 0;
+  h.classList.add("ready");
   [...h.childNodes].forEach(n => {
     if (n.nodeType === 3) {
       const frag = document.createDocumentFragment();
@@ -182,16 +185,28 @@ function setLang(l, first) {
   if (!builder.touchedLang) builder.msgLang = LANG;
   renderExtras(); renderMsg();
   try { localStorage.setItem("leo-lang", LANG); } catch (e) {}
-  document.dispatchEvent(new CustomEvent("leo:lang", { detail: LANG }));
+  document.dispatchEvent(new CustomEvent("leo:lang", { detail: { lang: LANG, first: !!first } }));
 }
 $("#lang").addEventListener("click", () => setLang(LANG === "es" ? "en" : "es"));
 
 /* ---------- Tema claro / oscuro ---------- */
-$("#theme").addEventListener("click", () => {
-  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-  root.dataset.theme = dark ? "light" : "dark";
-  try { localStorage.setItem("leo-theme", root.dataset.theme); } catch (e) {}
-  if (window.__recolor) window.__recolor();
+$("#theme").addEventListener("click", e => {
+  const btn = e.currentTarget;
+  const apply = () => {
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("leo-theme", root.dataset.theme); } catch (e) {}
+    if (window.__recolor) window.__recolor();
+  };
+  btn.classList.remove("spin"); void btn.offsetWidth; btn.classList.add("spin");
+  if (!document.startViewTransition || reduce) { apply(); return; }
+  const r = btn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+  const rad = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+  const vt = document.startViewTransition(apply);
+  vt.ready.then(() => root.animate(
+    { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${rad}px at ${x}px ${y}px)`] },
+    { duration: 700, easing: "cubic-bezier(.2,.8,.2,1)", pseudoElement: "::view-transition-new(root)" }
+  )).catch(() => {});
 });
 
 /* ---------- Barra superior, progreso y línea de tiempo ---------- */
@@ -283,6 +298,8 @@ document.addEventListener("click", e => {
   const b = e.target.closest("[data-copy]"); if (!b) return;
   const c = b.dataset.copy;
   copyText(c).then(() => toast(S().copied(c))).catch(() => toast(c));
+  b.classList.remove("copied"); void b.offsetWidth; b.classList.add("copied");
+  clearTimeout(b._ct); b._ct = setTimeout(() => b.classList.remove("copied"), 900);
   flash("colors");
 });
 
@@ -379,7 +396,7 @@ function renderDemo() {
   pre.innerHTML = d.code[LANG].split("\n").map((raw, i) => {
     const m = raw.match(/\s*⟦([a-z]+)⟧\s*$/);
     const line = m ? raw.slice(0, m.index) : raw;
-    return `<span class="ln"${m ? ` data-k="${m[1]}"` : ""} data-n="${i + 1}">${highlight(line, d.hl) || " "}</span>`;
+    return `<span class="ln"${m ? ` data-k="${m[1]}"` : ""} data-n="${i + 1}" style="--n:${i}">${highlight(line, d.hl) || " "}</span>`;
   }).join("");
   $("#result-note").textContent = S()[d.note];
 }
@@ -418,19 +435,45 @@ $$(".rbx-colors button", rbx).forEach(b => b.addEventListener("click", () => {
   rbx.style.setProperty("--rc", b.dataset.c); flash("theme");
 }));
 const play = $(".rbx-play", rbx);
-play.addEventListener("click", () => { play.classList.remove("pop"); void play.offsetWidth; play.classList.add("pop"); flash("play"); });
+play.addEventListener("click", e => {
+  play.classList.remove("pop"); void play.offsetWidth; play.classList.add("pop"); flash("play");
+  const r = play.getBoundingClientRect(), c = getComputedStyle(rbx).getPropertyValue("--rc").trim() || "#00A2FF";
+  if (window.LeoFX) LeoFX.burst(r.left + r.width / 2, r.top + r.height / 2, [c, "#2DD4BF", "#FFB020", c], 24, 1.5);
+});
 
 /* Demo tienda */
 let qty = 1, cart = 0;
 const PRICE = 164.9;
 $$("[data-q]").forEach(b => b.addEventListener("click", () => { qty = Math.max(1, qty + +b.dataset.q); $("#shop-qty").textContent = qty; flash("qty"); }));
+function flyTo(src, dst, done) {
+  if (reduce || !src || !dst) { done(); return; }
+  const a = src.getBoundingClientRect(), b = dst.getBoundingClientRect();
+  const ghost = src.cloneNode(true);
+  Object.assign(ghost.style, { position: "fixed", left: a.left + "px", top: a.top + "px", width: a.width + "px", height: a.height + "px", margin: 0, zIndex: 130, pointerEvents: "none", borderRadius: "12px", objectFit: "contain", background: "#fff", boxShadow: "0 18px 40px -12px rgba(11,94,215,.5)" });
+  document.body.appendChild(ghost);
+  const dx = b.left + b.width / 2 - (a.left + a.width / 2), dy = b.top + b.height / 2 - (a.top + a.height / 2);
+  const s = Math.max(.08, 22 / a.width);
+  const anim = ghost.animate([
+    { transform: "translate(0,0) scale(1)", opacity: 1 },
+    { transform: `translate(${dx * .45}px, ${dy * .45 - 90}px) scale(.55) rotate(-8deg)`, opacity: 1, offset: .45 },
+    { transform: `translate(${dx}px, ${dy}px) scale(${s}) rotate(-14deg)`, opacity: .2 }
+  ], { duration: 720, easing: "cubic-bezier(.45,0,.2,1)" });
+  anim.onfinish = () => { ghost.remove(); done(); };
+}
 $("#shop-add").addEventListener("click", () => {
-  cart += qty; const badge = $("#shop-badge"); badge.textContent = cart;
-  badge.classList.remove("bump"); void badge.offsetWidth; badge.classList.add("bump");
-  $("#shop-wa").disabled = false; flash("add");
+  cart += qty; flash("add");
+  const btn = $("#shop-add"); btn.classList.remove("pressed"); void btn.offsetWidth; btn.classList.add("pressed");
+  flyTo($(".shop-img img"), $("#shop-badge"), () => {
+    const badge = $("#shop-badge"); badge.textContent = cart;
+    badge.classList.remove("bump"); void badge.offsetWidth; badge.classList.add("bump");
+    $("#shop-wa").disabled = false;
+  });
 });
+let waT;
 $("#shop-wa").addEventListener("click", () => {
-  const bub = $("#wa-bubble"); bub.textContent = S().waMsg(cart, (cart * PRICE).toFixed(2)); bub.hidden = false; flash("wa");
+  const bub = $("#wa-bubble"); flash("wa"); clearTimeout(waT);
+  bub.hidden = false; bub.classList.add("typing"); bub.innerHTML = '<span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>';
+  waT = setTimeout(() => { bub.classList.remove("typing"); bub.textContent = S().waMsg(cart, (cart * PRICE).toFixed(2)); }, reduce ? 0 : 900);
 });
 
 /* Demo marca */
@@ -524,9 +567,14 @@ function message(l) {
   }
   return lines.join("\n");
 }
+let prevMsg = { lang: null, lines: [] };
 function renderMsg() {
   const m = message(builder.msgLang), box = $("#b-msg");
-  if (m) box.textContent = m; else box.innerHTML = `<span class="ph">${STR[builder.msgLang].placeholder}</span>`;
+  if (m) {
+    const lines = m.split("\n"), sameLang = prevMsg.lang === builder.msgLang && prevMsg.lines.length;
+    box.innerHTML = lines.map(l => `<span class="ml${sameLang && l.trim() && !prevMsg.lines.includes(l) ? " new" : ""}">${esc(l) || " "}</span>`).join("\n");
+    prevMsg = { lang: builder.msgLang, lines };
+  } else { box.innerHTML = `<span class="ph">${STR[builder.msgLang].placeholder}</span>`; prevMsg = { lang: builder.msgLang, lines: [] }; }
   $$("[data-ml]").forEach(b => b.setAttribute("aria-pressed", b.dataset.ml === builder.msgLang));
   $$("#b-types .chip").forEach(c => c.setAttribute("aria-pressed", builder.types.has(c.dataset.type)));
   $$("#b-when .chip").forEach(c => c.setAttribute("aria-checked", c.dataset.when === builder.when));
@@ -547,6 +595,14 @@ $("#b-when").addEventListener("click", e => {
 });
 idea.addEventListener("input", () => { builder.idea = idea.value; renderMsg(); saveBrief(); });
 $$("[data-ml]").forEach(b => b.addEventListener("click", () => { builder.msgLang = b.dataset.ml; builder.touchedLang = true; renderMsg(); }));
+function copiedFx(btn) {
+  if (!btn) return;
+  let ok = btn.querySelector(".ok-label");
+  if (!ok) { ok = document.createElement("span"); ok.className = "ok-label"; ok.setAttribute("aria-hidden", "true"); btn.appendChild(ok); }
+  ok.innerHTML = `<svg class="ico" viewBox="0 0 24 24"><path class="draw" d="M5 12.5l4.5 4.5L19 7.5"/></svg>${S().copiedBtn}`;
+  btn.classList.remove("copied"); void btn.offsetWidth; btn.classList.add("copied");
+  clearTimeout(btn._ct); btn._ct = setTimeout(() => btn.classList.remove("copied"), 1700);
+}
 function needTypes() {
   if (builder.types.size) return false;
   toast(S().pickFirst); const first = $("#b-types .chip"); first && first.focus(); return true;
@@ -554,13 +610,13 @@ function needTypes() {
 $("#b-go").addEventListener("click", () => {
   if (needTypes()) return;
   const text = message(builder.msgLang);
-  copyText(text).then(() => toast(S().msgCopied)).catch(() => toast(S().copyFail));
+  copyText(text).then(() => { toast(S().msgCopied); copiedFx($("#b-go")); }).catch(() => toast(S().copyFail));
   const w = window.open(CONFIG.fiverr, "_blank");
   if (w) { try { w.opener = null; } catch (e) {} } else setTimeout(() => { location.href = CONFIG.fiverr; }, 900);
 });
 $("#b-copy").addEventListener("click", () => {
   if (needTypes()) return;
-  copyText(message(builder.msgLang)).then(() => toast(S().msgCopiedOnly)).catch(() => toast(S().copyFail));
+  copyText(message(builder.msgLang)).then(() => { toast(S().msgCopiedOnly); copiedFx($("#b-copy")); }).catch(() => toast(S().copyFail));
 });
 /* Los botones «Cotizar este servicio» eligen el servicio en el formulario */
 const PICK = { web: "web", brand: "brand", roblox: "roblox", minecraft: "minecraft", auto: "auto", video: "video" };
@@ -576,6 +632,7 @@ function squareField(canvas, opts) {
   const SZ = opts.size, R = opts.radius;
   let W = 0, H = 0, cols = 0, rows = 0, cells = new Float32Array(0);
   let mouse = { x: -9999, y: -9999, active: false }, color = "36,83,214", color2 = "20,184,166", running = false, raf = 0;
+  let offY = 0, prevV = 0; const pulses = [];
   const toRgb = v => { const h = v.trim().replace("#", ""); return [0, 2, 4].map(i => parseInt(h.substr(i, 2), 16)).join(","); };
   const readColors = () => {
     const cs = getComputedStyle(root);
@@ -591,17 +648,29 @@ function squareField(canvas, opts) {
     if (!running) return;
     ctx.clearRect(0, 0, W, H);
     if (mouse.active) {
-      const cx = Math.floor(mouse.x / SZ), cy = Math.floor(mouse.y / SZ), n = Math.ceil(R / SZ);
+      const cx = Math.floor(mouse.x / SZ), cy = Math.floor((mouse.y + offY) / SZ), n = Math.ceil(R / SZ);
       for (let y = cy - n; y <= cy + n; y++) for (let x = cx - n; x <= cx + n; x++) {
         if (x < 0 || y < 0 || x >= cols || y >= rows) continue;
-        const dx = x * SZ + SZ / 2 - mouse.x, dy = y * SZ + SZ / 2 - mouse.y, d = Math.sqrt(dx * dx + dy * dy);
+        const dx = x * SZ + SZ / 2 - mouse.x, dy = y * SZ + SZ / 2 - offY - mouse.y, d = Math.sqrt(dx * dx + dy * dy);
         if (d < R) { const v = 1 - d / R, i = y * cols + x; if (cells[i] < v) cells[i] = v; }
+      }
+    }
+    const now = performance.now();
+    for (let k = pulses.length - 1; k >= 0; k--) {
+      const p = pulses[k], prog = (now - p.t0) / p.dur;
+      if (prog >= 1) { pulses.splice(k, 1); continue; }
+      const rad = p.max * (1 - Math.pow(1 - prog, 2.2)), band = SZ * .9, strength = (1 - prog) * p.power;
+      const x0 = Math.max(0, Math.floor((p.x - rad - band) / SZ)), x1 = Math.min(cols - 1, Math.ceil((p.x + rad + band) / SZ));
+      const y0 = Math.max(0, Math.floor((p.y + offY - rad - band) / SZ)), y1 = Math.min(rows - 1, Math.ceil((p.y + offY + rad + band) / SZ));
+      for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) {
+        const d = Math.hypot(x * SZ + SZ / 2 - p.x, y * SZ + SZ / 2 - offY - p.y), gap = Math.abs(d - rad);
+        if (gap < band) { const v = strength * (1 - gap / band), i = y * cols + x; if (cells[i] < v) cells[i] = v; }
       }
     }
     if (Math.random() < opts.twinkle) { const i = (Math.random() * cells.length) | 0; cells[i] = Math.max(cells[i], .55 + Math.random() * .35); }
     for (let i = 0; i < cells.length; i++) {
       const v = cells[i]; if (v < .01) { cells[i] = 0; continue; }
-      const x = (i % cols) * SZ, y = ((i / cols) | 0) * SZ, c = hue[i % 4096] > .7 ? color2 : color;
+      const x = (i % cols) * SZ, y = ((i / cols) | 0) * SZ - offY, c = hue[i % 4096] > .7 ? color2 : color;
       ctx.fillStyle = `rgba(${c},${v * opts.alpha})`; ctx.fillRect(x + 1, y + 1, SZ - 1, SZ - 1);
       ctx.strokeStyle = `rgba(${c},${v * opts.alpha * 1.6})`; ctx.strokeRect(x + 1.5, y + 1.5, SZ - 2, SZ - 2);
       cells[i] = v * opts.decay;
@@ -611,6 +680,16 @@ function squareField(canvas, opts) {
   readColors(); resize(); addEventListener("resize", resize);
   return {
     move(x, y) { mouse.x = x; mouse.y = y; mouse.active = true; },
+    pulse(x, y, power = .95, max = 460, dur = 1100) { pulses.push({ x, y, power, max, dur, t0: performance.now() }); if (pulses.length > 6) pulses.shift(); },
+    scroll(pos, speed = .3) {
+      const v = pos * speed, shift = Math.floor(v / SZ) - Math.floor(prevV / SZ);
+      if (shift) {
+        if (Math.abs(shift) >= rows) cells.fill(0);
+        else if (shift > 0) { cells.copyWithin(0, shift * cols); cells.fill(0, (rows - shift) * cols); }
+        else { cells.copyWithin(-shift * cols, 0, (rows + shift) * cols); cells.fill(0, 0, -shift * cols); }
+      }
+      prevV = v; offY = v - Math.floor(v / SZ) * SZ; return offY;
+    },
     leave() { mouse.active = false; },
     recolor: readColors,
     start() { if (running) return; running = true; raf = requestAnimationFrame(frame); },
@@ -625,8 +704,10 @@ if (!reduce) {
   addEventListener("touchend", () => bg.leave(), { passive: true });
   document.addEventListener("visibilitychange", () => document.hidden ? bg.stop() : bg.start());
   window.__recolor = () => bg.recolor();
+  window.LeoBG = { bg, cf: null };
   const box = $(".contact-box");
   const cf = squareField($("#contact-canvas"), { size: 34, radius: 130, decay: .95, alpha: .28, twinkle: .18, color: "70,117,255", color2: "45,212,191" });
+  window.LeoBG.cf = cf;
   new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? cf.start() : cf.stop())).observe(box);
   box.addEventListener("pointermove", e => { const r = box.getBoundingClientRect(); cf.move(e.clientX - r.left, e.clientY - r.top); });
   box.addEventListener("pointerleave", () => cf.leave());
