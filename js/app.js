@@ -176,7 +176,7 @@ function setLang(l, first) {
   $$("[data-i18n-alt]").forEach(el => { const v = dict[el.dataset.i18nAlt]; if (v != null) el.alt = v; });
   $$("[data-i18n-ph]").forEach(el => { const v = dict[el.dataset.i18nPh]; if (v != null) el.placeholder = v; });
   document.title = S().title;
-  $("#lang").setAttribute("aria-label", S().lang);
+  $("#lang-sr").textContent = S().lang + ": ";
   $("#theme").setAttribute("aria-label", S().theme);
   const h = $("[data-split]");
   if (!first) h.classList.add("done");

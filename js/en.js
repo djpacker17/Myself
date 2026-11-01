@@ -30,6 +30,7 @@ window.LEO_EN = {
   "p.s3": "Cart, coupons, “Track your order” and direct orders through WhatsApp, connected to Google Sheets.",
   "p.s4": "Zypi, an interactive mascot with 16 secret achievements, plus two mini games: Zypi Catch and Zypuc Memory.",
   "p.s5": "Light and dark mode, installable as an app, and a “Stand mode” for the fair.",
+  "p.s6": "Private data encrypted with AES-256: purchase prices, suppliers and margins are visible only to the team.",
   "p.c3": "The result", "p.c3t": "The store is live and in use. We presented it to the public at an Entrepreneurship Fair stand on October 21, 2026.",
   "p.k1": "Role", "p.v1": "Founder and developer", "p.k2": "Year", "p.k3": "Tech", "p.k4": "Data", "p.k5": "Prices", "p.v5": "GitHub Actions, every 6 h", "p.k6": "Orders",
   "p.visit": "Visit the store",

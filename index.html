@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Fredoka:wght@600;700&family=Nunito+Sans:wght@500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/estilos.css?v=6">
+<link rel="stylesheet" href="css/estilos.css?v=7">
 <script>
   /* Antes de pintar: tema, idioma y si toca mostrar la intro */
   (function(){
@@ -131,7 +131,7 @@
         <li><a href="#preguntas" data-i18n="nav.faq">Preguntas</a></li>
       </ul>
     </nav>
-    <button class="lang" id="lang" type="button" aria-label="Cambiar idioma"><span data-l="es">ES</span><span data-l="en">EN</span></button>
+    <button class="lang" id="lang" type="button"><span class="sr" id="lang-sr">Cambiar idioma: </span><span data-l="es">ES</span><span data-l="en">EN</span></button>
     <button class="theme" id="theme" type="button" aria-label="Cambiar entre modo claro y oscuro"><svg class="ico moon"><use href="#i-moon"/></svg><svg class="ico sun"><use href="#i-sun"/></svg></button>
     <a class="btn btn-primary btn-sm js-fiverr" href="https://es.pro.fiverr.com/s/EmmQYNe" target="_blank" rel="noopener" data-i18n="nav.hire">Contratar</a>
   </div>
@@ -158,7 +158,7 @@
         </div>
         <div class="profile-wrap">
           <aside class="profile" id="profile" aria-label="Perfil">
-            <div class="photo"><img src="media/avatar.jpg" alt="Retrato ilustrado de Leo" width="800" height="800" data-i18n-alt="hero.alt" fetchpriority="high"><span class="shine"></span></div>
+            <div class="photo"><img src="media/avatar.webp" srcset="media/avatar-480.webp 480w, media/avatar-600.webp 600w, media/avatar.webp 800w" sizes="(max-width: 900px) 74vw, 384px" alt="Retrato ilustrado de Leo" width="800" height="800" data-i18n-alt="hero.alt" fetchpriority="high"><span class="shine"></span></div>
             <div class="info">
               <div>
                 <h2>Leo</h2>
@@ -241,6 +241,7 @@
                   <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s3">Carrito, cupones, «Rastrea tu pedido» y pedidos directos por WhatsApp, conectados a Google Sheets.</span></li>
                   <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s4">Zypi, una mascota interactiva con 16 logros secretos, y dos minijuegos: Zypi Catch y Memoria Zypuc.</span></li>
                   <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s5">Modo claro y oscuro, instalable como app y un «Modo stand» para la feria.</span></li>
+                  <li><svg class="ico"><use href="#i-check"/></svg><span data-i18n="p.s6">Datos privados cifrados con AES-256: precios de compra, proveedores y comisión solo los ve el equipo.</span></li>
                 </ul>
               </div>
               <div class="part">
@@ -285,7 +286,7 @@
 
           <div class="case-video">
             <div class="video-frame">
-              <video id="intro-video" src="media/zypuc-intro.mp4" poster="media/zypuc-intro-poster.jpg" muted loop playsinline preload="none" aria-label="Intro animada de la marca Zypuc"></video>
+              <video id="intro-video" src="media/zypuc-intro.mp4" poster="media/zypuc-intro-poster.webp" muted loop playsinline preload="none" aria-label="Intro animada de la marca Zypuc"></video>
               <button class="sound" id="sound" type="button" aria-pressed="false"></button>
             </div>
             <div class="video-text">
@@ -581,15 +582,15 @@
 </div>
 
 <div class="m-cta" id="m-cta">
-  <img src="media/avatar-320.jpg" alt="" width="34" height="34">
+  <img src="media/avatar-128.webp" alt="" width="34" height="34" loading="lazy">
   <span><b>Leo</b><span data-i18n="m.t">Webs, marcas y scripts</span></span>
   <a class="btn btn-accent js-fiverr" href="https://es.pro.fiverr.com/s/EmmQYNe" target="_blank" rel="noopener" data-i18n="m.b">Contratar</a>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/en.js?v=6" defer></script>
-<script src="js/app.js?v=6" defer></script>
-<script src="js/intro.js?v=6" defer></script>
-<script src="js/interacciones.js?v=6" defer></script>
+<script src="js/en.js?v=7" defer></script>
+<script src="js/app.js?v=7" defer></script>
+<script src="js/intro.js?v=7" defer></script>
+<script src="js/interacciones.js?v=7" defer></script>
 </body>
 </html>
